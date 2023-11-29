@@ -1,6 +1,7 @@
 package models.countries
 
 import models.Currency
+import models.Domain
 
 data object Pakistan: Country {
     override val name = "Pakistan"
@@ -8,6 +9,7 @@ data object Pakistan: Country {
     override val continent = Continent.Asia
     override val drivingDirection = DrivingDirection.Left
     override val currency = Currency.PakistaniRupee
+    override val domain = Domain.Pakistan
 
     override val majorCities = listOf("TODO")
     override val carPlates = listOf("TODO")

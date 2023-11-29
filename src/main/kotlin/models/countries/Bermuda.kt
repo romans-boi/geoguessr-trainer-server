@@ -1,6 +1,7 @@
 package models.countries
 
 import models.Currency
+import models.Domain
 
 data object Bermuda: Country {
     override val name = "Bermuda"
@@ -8,6 +9,7 @@ data object Bermuda: Country {
     override val continent = Continent.NorthAmerica
     override val drivingDirection = DrivingDirection.Left
     override val currency = Currency.Dollar
+    override val domain = Domain.Bermuda
 
     override val majorCities = listOf("TODO")
     override val carPlates = listOf("TODO")

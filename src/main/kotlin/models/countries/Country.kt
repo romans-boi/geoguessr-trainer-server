@@ -1,16 +1,16 @@
 package models.countries
 
 import models.Currency
+import models.Domain
 
 
 sealed interface Country {
     val name: String?
     val capitalCities: List<String>?
     val continent: Continent
-
-    val currency: Currency
-
     val drivingDirection: DrivingDirection
+    val currency: Currency
+    val domain: Domain
 
     val majorCities: List<String>
 

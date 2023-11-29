@@ -2,6 +2,7 @@
 package models.countries
 
 import models.Currency
+import models.Domain
 
 data object Denmark: Country {
     override val name = "Denmark"
@@ -9,6 +10,7 @@ data object Denmark: Country {
     override val continent = Continent.Europe(isPartOfEuropeanUnion = true)
     override val drivingDirection = DrivingDirection.Right
     override val currency = Currency.Krone
+    override val domain = Domain.Denmark
 
     override val majorCities = listOf("TODO")
     override val carPlates = listOf("TODO")
