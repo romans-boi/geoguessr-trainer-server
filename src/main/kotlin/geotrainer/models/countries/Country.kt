@@ -1,9 +1,6 @@
 package geotrainer.models.countries
 
-import geotrainer.models.Continent
-import geotrainer.models.Currency
-import geotrainer.models.Domain
-import geotrainer.models.DrivingSide
+import geotrainer.models.*
 
 
 sealed interface Country {
@@ -20,5 +17,30 @@ sealed interface Country {
     val carPlates: List<String>
     // TODO change this to URL
     val bollards: List<String>?
+
+    sealed class AfricanCountry: Country {
+        final override val continent: Continent = Continent.Africa
+    }
+
+    sealed class AsianCountry: Country {
+        final override val continent: Continent = Continent.Asia
+    }
+
+    sealed class NorthAmericanCountry: Country {
+        final override val continent: Continent = Continent.NorthAmerica
+    }
+
+    sealed class SouthAmericanCountry: Country {
+        final override val continent: Continent = Continent.SouthAmerica
+    }
+
+    sealed class OceanianCountry: Country {
+        final override val continent: Continent = Continent.Oceania
+    }
+
+    sealed class EuropeanCountry: Country {
+        abstract val isPartOfEuropeanUnion: Boolean
+        final override val continent: Continent = Continent.Europe
+    }
 }
 

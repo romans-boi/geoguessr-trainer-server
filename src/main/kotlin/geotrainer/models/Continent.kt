@@ -1,24 +1,67 @@
 package geotrainer.models
 
-import kotlinx.serialization.Serializable
+import geotrainer.models.quiz.QuizSection
+import geotrainer.models.quiz.Quiz
 
-@Serializable
-sealed interface Continent {
-    @Serializable
-    data object Africa: Continent
+enum class Continent {
+    Africa,
+    Asia,
+    NorthAmerica,
+    Oceania,
+    SouthAmerica,
+    Europe
+    ;
 
-    @Serializable
-    data object Asia: Continent
+    fun getContinentalQuizzes(): List<QuizSection> = when(this) {
+        Africa -> {
+            setOf(
+                Quiz.CapitalCities,
+                Quiz.DomainNames,
+                Quiz.DrivingSide,
+            ).map { quiz -> QuizSection(quiz, continent = this) }
+        }
 
-    @Serializable
-    data object NorthAmerica: Continent
+        Asia -> {
+            setOf(
+                Quiz.CapitalCities,
+                Quiz.DomainNames,
+                Quiz.DrivingSide,
 
-    @Serializable
-    data object Oceania: Continent
+                Quiz.JapanesePrefecturesKanji
+            ).map { quiz -> QuizSection(quiz, continent = this) }
 
-    @Serializable
-    data object SouthAmerica: Continent
+        }
 
-    @Serializable
-    data class Europe(val isPartOfEuropeanUnion: Boolean): Continent
+        NorthAmerica -> {
+            setOf(
+                Quiz.CapitalCities,
+                Quiz.DomainNames,
+                Quiz.DrivingSide,
+            ).map { quiz -> QuizSection(quiz, continent = this) }
+        }
+
+        Oceania -> {
+            setOf(
+                Quiz.CapitalCities,
+                Quiz.DomainNames,
+                Quiz.DrivingSide,
+            ).map { quiz -> QuizSection(quiz, continent = this) }
+        }
+
+        SouthAmerica -> {
+            setOf(
+                Quiz.CapitalCities,
+                Quiz.DomainNames,
+                Quiz.DrivingSide,
+            ).map { quiz -> QuizSection(quiz, continent = this) }
+        }
+
+        Europe -> {
+            setOf(
+                Quiz.CapitalCities,
+                Quiz.DomainNames,
+                Quiz.DrivingSide,
+            ).map { quiz -> QuizSection(quiz, continent = this) }
+        }
+    }
 }

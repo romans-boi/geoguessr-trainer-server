@@ -1,6 +1,5 @@
 package geotrainer.models.countries
 
-import geotrainer.models.Continent
 import geotrainer.models.Currency
 import geotrainer.models.Domain
 import geotrainer.models.DrivingSide
@@ -14,11 +13,10 @@ data class SouthAfrica(
         "Cape Town (legislative)",
         "Bloemfontein (judiciary)"
     ),
-    override val continent: Continent = Continent.Africa,
-    val drivingSide: DrivingSide = DrivingSide.Left,
+    override val drivingSide: DrivingSide = DrivingSide.Left,
     override val currency: Currency = Currency.Rand,
     override val domain: Domain = Domain.SouthAfrica,
     override val majorCities: List<String> = listOf("TODO"),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO")
-) : Country
+) : Country.AfricanCountry()
