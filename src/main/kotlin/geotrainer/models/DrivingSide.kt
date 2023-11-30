@@ -1,6 +1,6 @@
 package geotrainer.models
 
-enum class DrivingDirection {
+enum class DrivingSide {
     Left,
     Right
 }
