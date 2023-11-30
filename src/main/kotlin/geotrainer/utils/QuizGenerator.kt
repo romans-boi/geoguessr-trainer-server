@@ -1,16 +1,16 @@
 package geotrainer.utils
 
 import geotrainer.models.Continent
-import geotrainer.models.quiz.Quiz
+import geotrainer.models.quiz.QuizType
 import geotrainer.models.quiz.QuizQuestion
 
-fun Quiz.generateDataForQuiz(continent: Continent?, numOfQuestions: Int): List<QuizQuestion> = when (this) {
-    Quiz.Everything -> TODO()
-    Quiz.CapitalCities -> TODO()
-    Quiz.DomainNames -> TODO()
-    Quiz.DrivingSide -> TODO()
-    Quiz.CountryInContinent -> TODO()
-    Quiz.JapanesePrefecturesKanji -> TODO()
+fun QuizType.generateDataForQuiz(continent: Continent?, numOfQuestions: Int): List<QuizQuestion> = when (this) {
+    QuizType.Everything -> TODO()
+    QuizType.CapitalCities -> TODO()
+    QuizType.DomainNames -> TODO()
+    QuizType.DrivingSide -> TODO()
+    QuizType.CountryInContinent -> TODO()
+    QuizType.JapanesePrefecturesKanji -> TODO()
 }
 
 

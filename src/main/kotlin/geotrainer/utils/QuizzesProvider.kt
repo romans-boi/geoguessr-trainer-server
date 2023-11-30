@@ -2,69 +2,69 @@ package geotrainer.utils
 
 import geotrainer.models.Continent
 import geotrainer.models.quiz.QuizSection
-import geotrainer.models.quiz.Quiz
+import geotrainer.models.quiz.QuizType
 
-fun Quiz.Companion.getSectionedQuizzes(): List<QuizSection> = getGenericSectionedQuizzes() + Continent.entries.flatMap {
+fun QuizType.Companion.getSectionedQuizzes(): List<QuizSection> = getGenericSectionedQuizzes() + Continent.entries.flatMap {
     it.getContinentSectionedQuizzes()
 }
 
-private fun Quiz.Companion.getGenericSectionedQuizzes(): List<QuizSection> = setOf(
-    Quiz.Everything,
-    Quiz.CountryInContinent,
-    Quiz.CapitalCities,
-    Quiz.DomainNames,
-    Quiz.DrivingSide
+private fun QuizType.Companion.getGenericSectionedQuizzes(): List<QuizSection> = setOf(
+    QuizType.Everything,
+    QuizType.CountryInContinent,
+    QuizType.CapitalCities,
+    QuizType.DomainNames,
+    QuizType.DrivingSide
 ).map { quiz -> QuizSection(quiz, continent = null) }
 
 private fun Continent.getContinentSectionedQuizzes(): List<QuizSection> = when(this) {
     Continent.Africa -> {
         setOf(
-            Quiz.CapitalCities,
-            Quiz.DomainNames,
-            Quiz.DrivingSide,
+            QuizType.CapitalCities,
+            QuizType.DomainNames,
+            QuizType.DrivingSide,
         ).map { quiz -> QuizSection(quiz, continent = this) }
     }
 
     Continent.Asia -> {
         setOf(
-            Quiz.CapitalCities,
-            Quiz.DomainNames,
-            Quiz.DrivingSide,
+            QuizType.CapitalCities,
+            QuizType.DomainNames,
+            QuizType.DrivingSide,
 
-            Quiz.JapanesePrefecturesKanji
+            QuizType.JapanesePrefecturesKanji
         ).map { quiz -> QuizSection(quiz, continent = this) }
 
     }
 
     Continent.NorthAmerica -> {
         setOf(
-            Quiz.CapitalCities,
-            Quiz.DomainNames,
-            Quiz.DrivingSide,
+            QuizType.CapitalCities,
+            QuizType.DomainNames,
+            QuizType.DrivingSide,
         ).map { quiz -> QuizSection(quiz, continent = this) }
     }
 
     Continent.Oceania -> {
         setOf(
-            Quiz.CapitalCities,
-            Quiz.DomainNames,
-            Quiz.DrivingSide,
+            QuizType.CapitalCities,
+            QuizType.DomainNames,
+            QuizType.DrivingSide,
         ).map { quiz -> QuizSection(quiz, continent = this) }
     }
 
     Continent.SouthAmerica -> {
         setOf(
-            Quiz.CapitalCities,
-            Quiz.DomainNames,
-            Quiz.DrivingSide,
+            QuizType.CapitalCities,
+            QuizType.DomainNames,
+            QuizType.DrivingSide,
         ).map { quiz -> QuizSection(quiz, continent = this) }
     }
 
     Continent.Europe -> {
         setOf(
-            Quiz.CapitalCities,
-            Quiz.DomainNames,
-            Quiz.DrivingSide,
+            QuizType.CapitalCities,
+            QuizType.DomainNames,
+            QuizType.DrivingSide,
         ).map { quiz -> QuizSection(quiz, continent = this) }
     }
 }

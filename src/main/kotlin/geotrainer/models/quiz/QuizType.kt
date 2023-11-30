@@ -1,6 +1,6 @@
 package geotrainer.models.quiz
 
-enum class Quiz(val title: String, val description: String) {
+enum class QuizType(val title: String, val description: String) {
     Everything(
         title = "Everything Combined",
         description = "TODO"

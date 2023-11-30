@@ -5,6 +5,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class QuizSection(
-    val quiz: Quiz,
+    val quizType: QuizType,
     val continent: Continent?,
 )
