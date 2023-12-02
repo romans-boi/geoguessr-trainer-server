@@ -42,6 +42,7 @@ data class QuestionAnswerSelector<QuestionAnswerType : Country, OtherOptionsType
     val otherOptionsSelector: (OtherOptionsType, answer: String) -> String?
 )
 
+@JvmName("generateQuizSameType")
 inline fun <reified QuestionAnswerOptionsType : Country> generateQuiz(
     numOfQuestions: Int,
     numOfOptions: Int,
@@ -58,6 +59,7 @@ inline fun <reified QuestionAnswerOptionsType : Country> generateQuiz(
     )
 }
 
+@JvmName("generateQuizDifferentTypes")
 inline fun <reified QuestionAnswerType : Country, reified OtherOptionsType : Country> generateQuiz(
     numOfQuestions: Int,
     numOfOptions: Int,
@@ -134,8 +136,10 @@ inline fun <reified QuestionAnswerType : Country, reified OtherOptionsType : Cou
             .shuffled()
             .take(numOfOptions - 1)
 
-        // If we couldn't get at least 2 options, then skip this country as part of the question
-        if (otherOptions.size < 2) {
+        println("DEBUG: $otherOptions")
+
+        // If we couldn't get at least 1 other option, then skip this country as part of the question
+        if (otherOptions.isEmpty()) {
             failedTries++
             continue
         }
@@ -143,11 +147,75 @@ inline fun <reified QuestionAnswerType : Country, reified OtherOptionsType : Cou
         quizQuestions.add(
             QuizQuestion(
                 question = question,
-                options = otherOptions + answer,
+                options = (otherOptions + answer).shuffled(),
                 correctAnswer = answer
             )
         )
     }
 
     return quizQuestions
+}
+
+fun main() {
+//    val quizQuestions = generateQuiz<Country>(
+//        numOfQuestions = 20,
+//        numOfOptions = 4,
+//        selectors = listOf(
+//            QuestionAnswerSelector(
+//                questionSelector = { country ->
+//                    "${country.capitalCities?.random()} is the capital of..."
+//                },
+//                answerSelector = { country -> country.name },
+//                otherOptionsSelector = { country, _ -> country.name }
+//            ),
+//
+//            QuestionAnswerSelector(
+//                questionSelector = { country ->
+//                    "What is the capital of ${country.name}?"
+//                },
+//                answerSelector = { country -> country.capitalCities?.random() },
+//                otherOptionsSelector = { country, _ -> country.capitalCities?.random() }
+//            )
+//        )
+//    )
+
+    val quizQuestions = generateQuiz<Country.EuropeanCountry>(
+        numOfQuestions = 300,
+        numOfOptions = 2,
+        selectors = listOf(
+            QuestionAnswerSelector(
+                questionSelector = { country ->
+                    "Is ${country.name} part of the European Union?"
+                },
+                answerSelector = { country -> if (country.isPartOfEuropeanUnion) "Yes" else "No" },
+                otherOptionsSelector = { country, _ -> if (country.isPartOfEuropeanUnion) "Yes" else "No" }
+            ),
+
+            QuestionAnswerSelector(
+                questionSelector = { "Which country is part of the EU?" },
+                answerSelector = { country -> country.name.takeIf { country.isPartOfEuropeanUnion } },
+                otherOptionsSelector = { country, _ -> country.name.takeIf { !country.isPartOfEuropeanUnion } }
+            ),
+
+            QuestionAnswerSelector(
+                questionSelector = { country ->
+                    "${country.name} is part of the European Union"
+                },
+                answerSelector = { country -> if (country.isPartOfEuropeanUnion) "True" else "False" },
+                otherOptionsSelector = { country, _ -> if (country.isPartOfEuropeanUnion) "True" else "False" }
+            ),
+        )
+    )
+
+
+    quizQuestions.map {
+        println("==========")
+        println("Question: ${it.question}")
+        println("Correct answer: ${it.correctAnswer}")
+        println("All options: ${it.options}")
+        println("==========")
+        println()
+    }
+
+    println("Total questions: ${quizQuestions.size}")
 }
