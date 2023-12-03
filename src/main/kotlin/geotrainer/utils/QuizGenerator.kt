@@ -93,17 +93,23 @@ internal class QuizGeneratorImpl() : QuizGenerator {
     ): List<QuizQuestion> {
         val allRelevantQuestionCountries = Country.allCountries.filterIsInstance<QuestionAnswerType>()
             // Filter by continent
-            .apply {
+            .let { filteredList ->
                 if (continent != null) {
-                    filter { it.continent == continent }
+                    filteredList.filter { it.continent == continent }
+                } else {
+                    filteredList
                 }
             }
 
+        println("DEBUG: ${allRelevantQuestionCountries.map { it::class }}")
+
         val allRelevantOtherOptionsCountries = Country.allCountries.filterIsInstance<OtherOptionsType>()
             // Filter by continent only if required
-            .apply {
+            .let { filteredList ->
                 if (continent != null && filterOptionsByContinent) {
-                    filter { it.continent == continent }
+                    filteredList.filter { it.continent == continent }
+                } else {
+                    filteredList
                 }
             }
 
@@ -152,25 +158,38 @@ internal class QuizGeneratorImpl() : QuizGenerator {
                 remainingRelevantQuestionCountries += allRelevantQuestionCountries
             }
 
-            val question = selector.questionSelector(selectedCountry)
+            val questionCategory = selector.questionCategorySelector(selectedCountry)
             val answer = selector.answerSelector(selectedCountry)
 
             if (
-                question == null ||
+                questionCategory == null ||
                 answer == null ||
                 // If we care about a question already existing, want to avoid
                 // having 2 of the same question + answer combination
                 (careIfQuestionAlreadyExists &&
-                        quizQuestions.any { it.question == question && it.correctAnswer == answer })
+                        quizQuestions.any {
+                            it.question == selector.questionDisplayName(questionCategory) && it.correctAnswer == answer
+                        })
             ) {
                 failedTries++
                 continue
             }
 
             val otherOptions = allRelevantOtherOptionsCountries
-                .mapNotNull { country ->
+                .mapNotNull { optionCountry ->
                     // Use the other options selector to get an option that's not the same as the answer
-                    selector.otherOptionsSelector(country, answer).takeIf { option -> option != answer }
+                    selector.otherOptionsSelector(optionCountry)
+                        .takeIf { option ->
+                            // Check whether the country selected for the option would generate the same output
+                            // for the question category. If it does, we can't use it as an option. For example, if
+                            // the category is DrivingSide, the answers would never be the same, but the question category
+                            // for both the selected country and the option would be e.g. "Left"
+                            val doesOptionMatchQuestionCategory = (optionCountry as? QuestionAnswerType)?.let {
+                                selector.questionCategorySelector(it) == questionCategory
+                            } ?: false
+
+                            option != answer && !doesOptionMatchQuestionCategory
+                        }
                 }
                 .distinct()
                 .shuffled()
@@ -184,7 +203,7 @@ internal class QuizGeneratorImpl() : QuizGenerator {
 
             quizQuestions.add(
                 QuizQuestion(
-                    question = question,
+                    question = selector.questionDisplayName(questionCategory),
                     options = (otherOptions + answer).shuffled(),
                     correctAnswer = answer
                 )
@@ -197,4 +216,24 @@ internal class QuizGeneratorImpl() : QuizGenerator {
 
 
 fun main() {
+    val quizGen = QuizGeneratorImpl()
+
+    (Continent.entries + null).forEach { continent ->
+        println("================ Quiz for $continent ================")
+        val quiz = quizGen.generateCapitalCitiesQuiz(
+            continent = continent,
+            numOfQuestions = 30,
+            numOfOptions = 4
+        )
+
+        quiz.map {
+            println("============")
+            println("Question: ${it.question}")
+            println("Options: ${it.options}")
+            println("Answer: ${it.correctAnswer}")
+            println("===========")
+            println()
+        }
+        println()
+    }
 }

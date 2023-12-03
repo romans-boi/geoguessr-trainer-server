@@ -4,20 +4,18 @@ import geotrainer.models.countries.Country
 
 fun QuizTypeSelectors.domainNamesQuizSelectors() = listOf<QuestionAnswerSelector<Country, Country>>(
     QuestionAnswerSelector(
-        questionSelector = { country ->
-            "Which country has the domain '${country.domain.id}'"
-        },
+        questionCategorySelector = { country -> country.domain.id },
+        questionDisplayName = { "Which country has the domain '$it'" },
         answerSelector = { country -> country.name },
         // TODO for the future - maybe return null for non-similar-sounding countries
-        otherOptionsSelector = { country, _ -> country.name }
+        otherOptionsSelector = { country -> country.name }
     ),
 
     QuestionAnswerSelector(
-        questionSelector = { country ->
-            "Which domain is used for ${country.name}?"
-        },
+        questionCategorySelector = { country -> country.name },
+        questionDisplayName = { "Which domain is used for $it?" },
         answerSelector = { country -> country.domain.id },
         // TODO for the future - maybe return null for non-similar-sounding domains
-        otherOptionsSelector = { country, _ -> country.domain.id }
+        otherOptionsSelector = { country -> country.domain.id }
     ),
 )
