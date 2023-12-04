@@ -3,6 +3,8 @@ package geotrainer.utils
 import geotrainer.models.Continent
 import geotrainer.models.countries.Country
 import geotrainer.models.quiz.QuizQuestion
+import geotrainer.utils.questionfactory.CapitalCitiesQuestionFactory
+import geotrainer.utils.questionfactory.QuestionFactory
 import geotrainer.utils.quizselector.*
 
 interface QuizGenerator {
@@ -15,12 +17,9 @@ internal class QuizGeneratorImpl() : QuizGenerator {
         continent: Continent?,
         numOfQuestions: Int,
         numOfOptions: Int,
-    ) = generateQuiz(
+    ) = generateQuizNew(
         numOfQuestions = numOfQuestions,
-        numOfOptions = numOfOptions,
-        continent = continent,
-        filterOptionsByContinent = false,
-        selectors = QuizTypeSelectors.capitalCitiesQuizSelectors()
+        questionFactory = CapitalCitiesQuestionFactory(numOfOptions, continent)
     )
 
     fun generateDomainNamesQuiz(
@@ -208,6 +207,29 @@ internal class QuizGeneratorImpl() : QuizGenerator {
                     correctAnswer = answer
                 )
             )
+
+            // Reset failed tries
+            failedTries = 0
+        }
+
+        return quizQuestions
+    }
+
+    private fun generateQuizNew(
+        numOfQuestions: Int,
+        questionFactory: QuestionFactory,
+    ): List<QuizQuestion> {
+        val quizQuestions = mutableListOf<QuizQuestion>()
+
+        val maxTries = numOfQuestions * 3
+        var failedTries = 0
+        while (quizQuestions.size < numOfQuestions && (failedTries <= maxTries)) {
+            questionFactory.getQuestion()?.let {
+                quizQuestions.add(it)
+                failedTries = 0
+            } ?: run {
+                failedTries++
+            }
         }
 
         return quizQuestions

@@ -2,6 +2,7 @@ package geotrainer.utils.quizselector
 
 import geotrainer.models.Continent
 import geotrainer.models.countries.Country
+import geotrainer.models.quiz.QuizQuestion
 
 data class QuestionAnswerSelector<QuestionAnswerType : Country, OtherOptionsType : Country>(
     val questionCategorySelector: (countryForQuestion: QuestionAnswerType) -> String?,
@@ -9,3 +10,4 @@ data class QuestionAnswerSelector<QuestionAnswerType : Country, OtherOptionsType
     val questionDisplayName: (String) -> String,
     val otherOptionsSelector: (countryForOption: OtherOptionsType) -> String?
 )
+
