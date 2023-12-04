@@ -4,6 +4,7 @@ import geotrainer.models.Continent
 import geotrainer.models.countries.Country
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.questionfactory.CapitalCitiesQuestionFactory
+import geotrainer.utils.questionfactory.DrivingSideQuestionFactory
 import geotrainer.utils.questionfactory.QuestionFactory
 import geotrainer.utils.quizselector.*
 
@@ -38,11 +39,9 @@ internal class QuizGeneratorImpl() : QuizGenerator {
         continent: Continent?,
         numOfQuestions: Int,
         numOfOptions: Int,
-    ) = generateQuiz(
+    ) = generateQuizNew(
         numOfQuestions = numOfQuestions,
-        numOfOptions = numOfOptions,
-        continent = continent,
-        selectors = QuizTypeSelectors.drivingSideQuizSelectors()
+        questionFactory = DrivingSideQuestionFactory(numOfOptions, continent)
     )
 
     fun generateEuropeanUnionQuiz(
@@ -242,7 +241,7 @@ fun main() {
 
     (Continent.entries + null).forEach { continent ->
         println("================ Quiz for $continent ================")
-        val quiz = quizGen.generateCapitalCitiesQuiz(
+        val quiz = quizGen.generateDrivingSideQuiz(
             continent = continent,
             numOfQuestions = 30,
             numOfOptions = 4

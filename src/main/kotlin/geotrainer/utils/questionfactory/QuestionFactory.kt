@@ -19,12 +19,21 @@ abstract class QuestionFactory(
         question: String,
         possibleOptions: List<String>?,
         correctAnswer: String,
+        combineAnswerWithOptions: Boolean = true,
         shuffleOptions: Boolean = true,
     ): QuizQuestion? {
-        return possibleOptions?.let {
+        return possibleOptions?.let { options ->
+            val processedOptions = if (combineAnswerWithOptions) {
+                options + correctAnswer
+            } else {
+                options
+            }.let {
+                if (shuffleOptions) it.shuffled() else it
+            }
+
             QuizQuestion(
                 question = question,
-                options = (it + correctAnswer).let { allOptions -> if (shuffleOptions) allOptions.shuffled() else allOptions},
+                options = processedOptions,
                 correctAnswer = correctAnswer
             )
         }
