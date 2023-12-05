@@ -8,7 +8,7 @@ class CapitalCitiesQuestionFactory(
     continent: Continent?
 ) : QuestionFactory(numOfOptions, continent) {
     override val allRelevantQuestionCountries =
-        super.allRelevantQuestionCountries.filter { it.capitalCities != null && it.name != null }
+        super.allRelevantQuestionCountries.filter { it.capitalCities != null }
     override val allRemainingRelevantQuestionCountries = allRelevantQuestionCountries.toMutableList()
 
     override val questionVariants: List<QuestionVariant> = listOf(
@@ -22,10 +22,10 @@ class CapitalCitiesQuestionFactory(
             updateRemainingRelevantQuestionCountries(country)
 
             val questionSubject = country.capitalCities?.randomOrNull() ?: return null
-            val answerSubject = country.name ?: return null
+            val answerSubject = country.name
 
             val possibleOptions = (allRelevantQuestionCountries - country)
-                .mapNotNull { it.name }
+                .map { it.name }
                 .processOptions(answerSubject)
 
             return finaliseQuestion(
@@ -41,7 +41,7 @@ class CapitalCitiesQuestionFactory(
             val country = allRemainingRelevantQuestionCountries.randomOrNull() ?: return null
             updateRemainingRelevantQuestionCountries(country)
 
-            val questionSubject = country.name ?: return null
+            val questionSubject = country.name
             val answerSubject = country.capitalCities?.randomOrNull() ?: return null
 
             val possibleOptions = (allRelevantQuestionCountries - country)

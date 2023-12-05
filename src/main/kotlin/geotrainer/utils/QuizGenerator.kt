@@ -6,8 +6,10 @@ import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.questionfactory.CapitalCitiesQuestionFactory
 import geotrainer.utils.questionfactory.DomainNameQuestionFactory
 import geotrainer.utils.questionfactory.DrivingSideQuestionFactory
+import geotrainer.utils.questionfactory.EuropeanUnionQuestionFactory
 import geotrainer.utils.questionfactory.QuestionFactory
-import geotrainer.utils.quizselector.*
+import geotrainer.utils.quizselector.QuestionAnswerSelector
+
 
 interface QuizGenerator {
 
@@ -45,10 +47,9 @@ internal class QuizGeneratorImpl() : QuizGenerator {
     fun generateEuropeanUnionQuiz(
         numOfQuestions: Int,
         numOfOptions: Int,
-    ) = generateQuiz(
+    ) = generateQuizNew(
         numOfQuestions = numOfQuestions,
-        numOfOptions = numOfOptions,
-        selectors = QuizTypeSelectors.europeanUnionQuizSelectors()
+        questionFactory = EuropeanUnionQuestionFactory(numOfOptions)
     )
 
 
@@ -237,11 +238,10 @@ internal class QuizGeneratorImpl() : QuizGenerator {
 fun main() {
     val quizGen = QuizGeneratorImpl()
 
-    listOf(null).forEach { continent ->
-        println("================ Quiz for $continent ================")
-        val quiz = quizGen.generateDomainNamesQuiz(
-            continent = continent,
-            numOfQuestions = 15,
+    //listOf(null).forEach { continent ->
+        //println("================ Quiz for $continent ================")
+        val quiz = quizGen.generateEuropeanUnionQuiz(
+            numOfQuestions = 100,
             numOfOptions = 4
         )
 
@@ -249,10 +249,10 @@ fun main() {
             println("============")
             println("Question: ${it.question}")
             println("Options: ${it.options}")
-            //println("Answer: ${it.correctAnswer}")
+            println("Answer: ${it.correctAnswer}")
             println("===========")
             println()
         }
         println()
-    }
+    //}
 }

@@ -8,7 +8,6 @@ class DrivingSideQuestionFactory(
     override val numOfOptions: Int,
     continent: Continent?
 ) : QuestionFactory(numOfOptions, continent) {
-    override val allRelevantQuestionCountries = super.allRelevantQuestionCountries.filter { it.name != null }
     override val allRemainingRelevantQuestionCountries = allRelevantQuestionCountries.toMutableList()
 
     override val questionVariants: List<QuestionVariant> = listOf(
@@ -22,11 +21,11 @@ class DrivingSideQuestionFactory(
             updateRemainingRelevantQuestionCountries(country)
 
             val questionSubject = country.drivingSide
-            val answerSubject = country.name ?: return null
+            val answerSubject = country.name
 
             val possibleOptions = (allRelevantQuestionCountries - country)
                 .filter { it.drivingSide != questionSubject }
-                .mapNotNull { it.name }
+                .map { it.name }
                 .processOptions(answerSubject)
 
             return finaliseQuestion(
@@ -42,7 +41,7 @@ class DrivingSideQuestionFactory(
             val country = allRemainingRelevantQuestionCountries.randomOrNull() ?: return null
             updateRemainingRelevantQuestionCountries(country)
 
-            val questionSubject = country.name ?: return null
+            val questionSubject = country.name
             val answerSubject = country.drivingSide.name
 
             val possibleOptions = DrivingSide.entries.map { it.name }

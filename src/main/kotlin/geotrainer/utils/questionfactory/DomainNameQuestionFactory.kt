@@ -8,7 +8,6 @@ class DomainNameQuestionFactory(
     override val numOfOptions: Int,
     continent: Continent?
 ) : QuestionFactory(numOfOptions, continent) {
-    override val allRelevantQuestionCountries = super.allRelevantQuestionCountries.filter { it.name != null }
     override val allRemainingRelevantQuestionCountries = allRelevantQuestionCountries.toMutableList()
 
     override val questionVariants: List<QuestionVariant> = listOf(
@@ -22,9 +21,9 @@ class DomainNameQuestionFactory(
             updateRemainingRelevantQuestionCountries(country)
 
             val questionSubject = country.domain.id
-            val answerSubject = country.name ?: return null
+            val answerSubject = country.name
 
-            val possibleOptions = (allRelevantQuestionCountries - country).mapNotNull { it.name }
+            val possibleOptions = (allRelevantQuestionCountries - country).map { it.name }
 
             // Prioritise countries that start with the letter of the domain name
             val similarOptions = possibleOptions.filter { countryName ->
@@ -52,9 +51,9 @@ class DomainNameQuestionFactory(
             }
 
             return finaliseQuestion(
-                "What country uses the domain '$questionSubject'?",
-                (similarOptions + additionalOptions).shuffled(),
-                answerSubject
+                question = "What country uses the domain '$questionSubject'?",
+                possibleOptions = similarOptions + additionalOptions,
+                correctAnswer = answerSubject
             )
         }
     }
@@ -64,7 +63,7 @@ class DomainNameQuestionFactory(
             val country = allRemainingRelevantQuestionCountries.randomOrNull() ?: return null
             updateRemainingRelevantQuestionCountries(country)
 
-            val questionSubject = country.name ?: return null
+            val questionSubject = country.name
             val answerSubject = country.domain.id
 
             val questionSubjectLettersOnly = questionSubject.filter { it.isLetter() }
@@ -102,9 +101,9 @@ class DomainNameQuestionFactory(
             }
 
             return finaliseQuestion(
-                "What domain is used in $questionSubject?",
-                (similarOptions + additionalOptions).shuffled(),
-                answerSubject
+                question = "What domain is used in $questionSubject?",
+                possibleOptions = similarOptions + additionalOptions,
+                correctAnswer = answerSubject
             )
         }
     }
