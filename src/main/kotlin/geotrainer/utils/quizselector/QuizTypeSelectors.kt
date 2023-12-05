@@ -1,3 +1,0 @@
-package geotrainer.utils.quizselector
-
-object QuizTypeSelectors
