@@ -2,10 +2,14 @@ package geotrainer.utils.questionfactory
 
 import geotrainer.models.countries.Country
 import geotrainer.models.quiz.QuizQuestion
+import geotrainer.utils.CountryProvider
+import geotrainer.utils.RandomHelper
 
 class EuropeanUnionQuestionFactory(
     override val numOfOptions: Int,
-) : QuestionFactory(numOfOptions, continent = null) {
+    override val randomHelper: RandomHelper,
+    countryProvider: CountryProvider
+) : QuestionFactory(continent = null, numOfOptions, randomHelper, countryProvider) {
     override val allRelevantQuestionCountries: List<Country> = super.allRelevantQuestionCountries.filterIsInstance<Country.EuropeanCountry>()
     override val allRemainingRelevantQuestionCountries = allRelevantQuestionCountries.toMutableList()
 
@@ -14,9 +18,9 @@ class EuropeanUnionQuestionFactory(
         CountryNameInQuestionVariant()
     )
 
-    private inner class EuropeanUnionInQuestionVariant : QuestionVariant(numOfOptions) {
+    private inner class EuropeanUnionInQuestionVariant : QuestionVariant(numOfOptions, randomHelper) {
         override fun getQuestion(): QuizQuestion? {
-            val country = allRemainingRelevantQuestionCountries.randomOrNull() ?: return null
+            val country = randomHelper.randomOrNull(allRemainingRelevantQuestionCountries) ?: return null
 
             updateRemainingRelevantQuestionCountries(country)
 
@@ -41,9 +45,9 @@ class EuropeanUnionQuestionFactory(
         }
     }
 
-    private inner class CountryNameInQuestionVariant : QuestionVariant(numOfOptions = 2) {
+    private inner class CountryNameInQuestionVariant : QuestionVariant(numOfOptions = 2, randomHelper) {
         override fun getQuestion(): QuizQuestion? {
-            val country = allRemainingRelevantQuestionCountries.randomOrNull() ?: return null
+            val country = randomHelper.randomOrNull(allRemainingRelevantQuestionCountries) ?: return null
 
             updateRemainingRelevantQuestionCountries(country)
 

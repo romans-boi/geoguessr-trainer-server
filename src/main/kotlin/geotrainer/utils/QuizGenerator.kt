@@ -2,11 +2,8 @@ package geotrainer.utils
 
 import geotrainer.models.Continent
 import geotrainer.models.quiz.QuizQuestion
-import geotrainer.utils.questionfactory.CapitalCitiesQuestionFactory
-import geotrainer.utils.questionfactory.DomainNameQuestionFactory
-import geotrainer.utils.questionfactory.DrivingSideQuestionFactory
-import geotrainer.utils.questionfactory.EuropeanUnionQuestionFactory
 import geotrainer.utils.questionfactory.QuestionFactory
+import geotrainer.utils.questionfactory.QuestionFactoryProvider
 
 
 interface QuizGenerator {
@@ -34,7 +31,9 @@ interface QuizGenerator {
     ): List<QuizQuestion>
 }
 
-internal class QuizGeneratorImpl() : QuizGenerator {
+internal class QuizGeneratorImpl(
+    private val questionFactoryProvider: QuestionFactoryProvider
+) : QuizGenerator {
 
     override fun generateCapitalCitiesQuiz(
         continent: Continent?,
@@ -42,7 +41,7 @@ internal class QuizGeneratorImpl() : QuizGenerator {
         numOfOptions: Int,
     ) = generateQuizNew(
         numOfQuestions = numOfQuestions,
-        questionFactory = CapitalCitiesQuestionFactory(numOfOptions, continent)
+        questionFactory = questionFactoryProvider.getCapitalCitiesQuestionFactory(numOfOptions, continent)
     )
 
     override fun generateDomainNamesQuiz(
@@ -51,7 +50,7 @@ internal class QuizGeneratorImpl() : QuizGenerator {
         numOfOptions: Int,
     ) = generateQuizNew(
         numOfQuestions = numOfQuestions,
-        questionFactory = DomainNameQuestionFactory(numOfOptions, continent)
+        questionFactory = questionFactoryProvider.getDomainNamesQuestionFactory(numOfOptions, continent)
     )
 
     override fun generateDrivingSideQuiz(
@@ -60,7 +59,7 @@ internal class QuizGeneratorImpl() : QuizGenerator {
         numOfOptions: Int,
     ) = generateQuizNew(
         numOfQuestions = numOfQuestions,
-        questionFactory = DrivingSideQuestionFactory(numOfOptions, continent)
+        questionFactory = questionFactoryProvider.getDrivingSideQuestionFactory(numOfOptions, continent)
     )
 
     override fun generateEuropeanUnionQuiz(
@@ -68,7 +67,7 @@ internal class QuizGeneratorImpl() : QuizGenerator {
         numOfOptions: Int,
     ) = generateQuizNew(
         numOfQuestions = numOfQuestions,
-        questionFactory = EuropeanUnionQuestionFactory(numOfOptions)
+        questionFactory = questionFactoryProvider.getEuropeanUnionQuestionFactory(numOfOptions)
     )
 
     private fun generateQuizNew(
@@ -93,24 +92,26 @@ internal class QuizGeneratorImpl() : QuizGenerator {
 }
 
 
-fun main() {
-    val quizGen = QuizGeneratorImpl()
-
-    //listOf(null).forEach { continent ->
-        //println("================ Quiz for $continent ================")
-        val quiz = quizGen.generateEuropeanUnionQuiz(
-            numOfQuestions = 100,
-            numOfOptions = 4
-        )
-
-        quiz.map {
-            println("============")
-            println("Question: ${it.question}")
-            println("Options: ${it.options}")
-            println("Answer: ${it.correctAnswer}")
-            println("===========")
-            println()
-        }
-        println()
-    //}
-}
+//fun main() {
+//    //val quizGen = QuizGeneratorImpl(QuestionFactoryProvider())
+//
+//    //listOf(null).forEach { continent ->
+//        //println("================ Quiz for $continent ================")
+//        val quiz = quizGen.generateEuropeanUnionQuiz(
+//            numOfQuestions = 100,
+//            numOfOptions = 4
+//        )
+//
+//        quiz.map {
+//            println("============")
+//            println("Question: ${it.question}")
+//            println("Options: ${it.options}")
+//            println("Answer: ${it.correctAnswer}")
+//            println("===========")
+//            println()
+//        }
+//        println()
+//    //}
+//
+//    CapitalCitiesQuestionFactory(2, null)
+//}
