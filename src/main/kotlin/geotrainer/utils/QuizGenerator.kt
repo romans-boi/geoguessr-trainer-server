@@ -4,6 +4,7 @@ import geotrainer.models.Continent
 import geotrainer.models.countries.Country
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.questionfactory.CapitalCitiesQuestionFactory
+import geotrainer.utils.questionfactory.DomainNameQuestionFactory
 import geotrainer.utils.questionfactory.DrivingSideQuestionFactory
 import geotrainer.utils.questionfactory.QuestionFactory
 import geotrainer.utils.quizselector.*
@@ -27,12 +28,9 @@ internal class QuizGeneratorImpl() : QuizGenerator {
         continent: Continent?,
         numOfQuestions: Int,
         numOfOptions: Int,
-    ) = generateQuiz(
+    ) = generateQuizNew(
         numOfQuestions = numOfQuestions,
-        numOfOptions = numOfOptions,
-        continent = continent,
-        filterOptionsByContinent = false,
-        selectors = QuizTypeSelectors.domainNamesQuizSelectors()
+        questionFactory = DomainNameQuestionFactory(numOfOptions, continent)
     )
 
     fun generateDrivingSideQuiz(
@@ -239,11 +237,11 @@ internal class QuizGeneratorImpl() : QuizGenerator {
 fun main() {
     val quizGen = QuizGeneratorImpl()
 
-    (Continent.entries + null).forEach { continent ->
+    listOf(null).forEach { continent ->
         println("================ Quiz for $continent ================")
-        val quiz = quizGen.generateDrivingSideQuiz(
+        val quiz = quizGen.generateDomainNamesQuiz(
             continent = continent,
-            numOfQuestions = 30,
+            numOfQuestions = 15,
             numOfOptions = 4
         )
 
@@ -251,7 +249,7 @@ fun main() {
             println("============")
             println("Question: ${it.question}")
             println("Options: ${it.options}")
-            println("Answer: ${it.correctAnswer}")
+            //println("Answer: ${it.correctAnswer}")
             println("===========")
             println()
         }
