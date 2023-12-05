@@ -4,7 +4,7 @@ import geotrainer.models.*
 
 
 sealed interface Country {
-    val name: String?
+    val name: String
     val capitalCities: List<String>?
     val continent: Continent
     val drivingSide: DrivingSide
