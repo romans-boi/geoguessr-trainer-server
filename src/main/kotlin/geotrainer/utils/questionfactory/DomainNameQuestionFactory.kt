@@ -39,7 +39,7 @@ class DomainNameQuestionFactory(
                 processedDomainInQuestion.isNotBlank() &&
                         (countryName.startsWith(processedDomainInQuestion.first(), ignoreCase = true)
                                 || processedDomainInQuestion.all { it in countryName })
-            }.ifEmpty { possibleOptions }
+            }.distinct().ifEmpty { possibleOptions }
 
             similarOptions = randomHelper.shuffle(similarOptions).take(numOfOptions - 1)
 
@@ -55,9 +55,16 @@ class DomainNameQuestionFactory(
                 emptyList()
             }
 
+            // Filter anything that is the answer, or repeating
+            val allOptions = (similarOptions + additionalOptions).filter {
+                it != country.name
+            }.distinct()
+
+            if (allOptions.isEmpty()) return null
+
             return finaliseQuestion(
                 question = "What country uses the domain '$questionSubject'?",
-                possibleOptions = similarOptions + additionalOptions,
+                possibleOptions = allOptions,
                 correctAnswer = answerSubject
             )
         }
@@ -107,14 +114,20 @@ class DomainNameQuestionFactory(
             val additionalOptions = if (numOfOptionsLeftToAdd > 0) {
                 randomHelper.shuffle(
                     (Domain.entries.map { it.id } - similarOptions.toSet() - answerSubject)
-                ).take(numOfOptionsLeftToAdd)
+                ).distinct().take(numOfOptionsLeftToAdd)
             } else {
                 emptyList()
             }
 
+            val allOptions = (similarOptions + additionalOptions).filter {
+                it != country.domain.id
+            }.distinct()
+
+            if (allOptions.isEmpty()) return null
+
             return finaliseQuestion(
                 question = "What domain is used in $questionSubject?",
-                possibleOptions = similarOptions + additionalOptions,
+                possibleOptions = allOptions,
                 correctAnswer = answerSubject
             )
         }
