@@ -30,6 +30,11 @@ enum class QuizType(val title: String, val description: String) {
         title = "Prefectures in Kanji",
         description = "TODO"
     ),
+
+    EuropeanUnionCountries(
+        title = "Countries in the European Union",
+        description = "TODO"
+    ),
     ;
 
     companion object

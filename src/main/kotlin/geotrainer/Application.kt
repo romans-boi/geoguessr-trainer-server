@@ -4,12 +4,14 @@ import geotrainer.plugins.configureDI
 import geotrainer.plugins.configureHTTP
 import geotrainer.plugins.configureRouting
 import geotrainer.plugins.configureSerialization
+import geotrainer.plugins.configureStatusPages
 import io.ktor.server.application.Application
 import io.ktor.server.engine.embeddedServer
 import io.ktor.server.netty.Netty
 
 fun Application.module() {
     configureDI()
+    configureStatusPages()
     configureSerialization()
     configureHTTP()
     configureRouting()

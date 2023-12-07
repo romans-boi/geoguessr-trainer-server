@@ -494,7 +494,7 @@
   enabled: true
 # If there is stateless class it is preferred to use object
 - name: OBJECT_IS_PREFERRED
-  enabled: true
+  enabled: false
 # If there exists negated version of function you should prefer it instead of !functionCall
 - name: INVERSE_FUNCTION_PREFERRED
   enabled: true

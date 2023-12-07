@@ -187,7 +187,7 @@ sealed interface Country {
 fun main() {
     val quizGen = QuizGeneratorImpl(
         questionFactoryProvider = QuestionFactoryProviderImpl(
-            randomHelper = RandomHelperImpl,
+            randomHelper = RandomHelperImpl(),
             countryProvider = CountryProvider { Country.allCountries }
         )
     )
