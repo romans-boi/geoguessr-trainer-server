@@ -3,17 +3,24 @@ package geotrainer.utils.questionfactory
 import geotrainer.models.Continent
 import geotrainer.models.countries.Country
 import geotrainer.models.quiz.QuizQuestion
+import geotrainer.utils.CountryProvider
+import geotrainer.utils.RandomHelper
 
 abstract class QuestionFactory(
-    open val numOfOptions: Int,
-    continent: Continent?
+    continent: Continent?,
+    protected open val numOfOptions: Int,
+    protected open val randomHelper: RandomHelper,
+    countryProvider: CountryProvider
 ) {
-    protected open val allRelevantQuestionCountries: List<Country> = Country.allCountries.filterByContinent(continent)
+    protected open val allRelevantQuestionCountries: List<Country> = countryProvider
+        .getAllCountries()
+        .filterByContinent(continent)
+
     protected abstract val allRemainingRelevantQuestionCountries: MutableList<Country>
 
     abstract val questionVariants: List<QuestionVariant>
 
-    fun getQuestion(): QuizQuestion? = questionVariants.random().getQuestion()
+    fun getQuestion(): QuizQuestion? = randomHelper.randomOrNull(questionVariants)?.getQuestion()
 
     protected fun finaliseQuestion(
         question: String,
@@ -21,22 +28,20 @@ abstract class QuestionFactory(
         correctAnswer: String,
         combineAnswerWithOptions: Boolean = true,
         shuffleOptions: Boolean = true,
-    ): QuizQuestion? {
-        return possibleOptions?.let { options ->
-            val processedOptions = if (combineAnswerWithOptions) {
-                options + correctAnswer
-            } else {
-                options
-            }.let {
-                if (shuffleOptions) it.shuffled() else it
-            }
-
-            QuizQuestion(
-                question = question,
-                options = processedOptions,
-                correctAnswer = correctAnswer
-            )
+    ): QuizQuestion? = possibleOptions?.let { options ->
+        val processedOptions = if (combineAnswerWithOptions) {
+            options + correctAnswer
+        } else {
+            options
+        }.let {
+            if (shuffleOptions) randomHelper.shuffle(it) else it
         }
+
+        QuizQuestion(
+            question = question,
+            options = processedOptions,
+            correctAnswer = correctAnswer
+        )
     }
 
     protected fun List<Country>.filterByContinent(continent: Continent?) = let { filteredList ->

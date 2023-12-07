@@ -29,7 +29,7 @@ enum class QuizType(val title: String, val description: String) {
     JapanesePrefecturesKanji(
         title = "Prefectures in Kanji",
         description = "TODO"
-    )
+    ),
     ;
 
     companion object

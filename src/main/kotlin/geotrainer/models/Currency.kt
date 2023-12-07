@@ -294,5 +294,6 @@ enum class Currency(val displayName: String, val symbol: String) {
     Dong(
         displayName = "Đồng",
         symbol = "₫, đ"
-    )
+    ),
+    ;
 }

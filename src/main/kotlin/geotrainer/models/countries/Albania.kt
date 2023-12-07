@@ -1,6 +1,8 @@
 package geotrainer.models.countries
 
-import geotrainer.models.*
+import geotrainer.models.Currency
+import geotrainer.models.Domain
+import geotrainer.models.DrivingSide
 import kotlinx.serialization.Serializable
 
 @Serializable

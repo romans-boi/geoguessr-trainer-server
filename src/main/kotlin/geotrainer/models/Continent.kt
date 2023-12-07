@@ -6,6 +6,6 @@ enum class Continent {
     NorthAmerica,
     Oceania,
     SouthAmerica,
-    Europe
+    Europe,
     ;
 }

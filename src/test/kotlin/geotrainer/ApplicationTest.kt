@@ -1,12 +1,13 @@
-package 
+package geotrainer
 
-import .plugins.*
-import io.ktor.client.request.*
-import io.ktor.client.statement.*
-import io.ktor.http.*
-import io.ktor.server.testing.*
 import geotrainer.plugins.configureRouting
-import kotlin.test.*
+import io.ktor.client.request.get
+import io.ktor.client.statement.bodyAsText
+import io.ktor.client.utils.EmptyContent.status
+import io.ktor.http.HttpStatusCode
+import io.ktor.server.testing.testApplication
+import junit.framework.TestCase.assertEquals
+import kotlin.test.Test
 
 class ApplicationTest {
     @Test

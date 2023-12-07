@@ -3,11 +3,20 @@ package geotrainer.utils.questionfactory
 import geotrainer.models.Continent
 import geotrainer.models.DrivingSide
 import geotrainer.models.quiz.QuizQuestion
+import geotrainer.utils.CountryProvider
+import geotrainer.utils.RandomHelper
 
 class DrivingSideQuestionFactory(
+    continent: Continent?,
     override val numOfOptions: Int,
-    continent: Continent?
-) : QuestionFactory(numOfOptions, continent) {
+    override val randomHelper: RandomHelper,
+    countryProvider: CountryProvider
+) : QuestionFactory(
+    continent,
+    numOfOptions,
+    randomHelper,
+    countryProvider
+) {
     override val allRemainingRelevantQuestionCountries = allRelevantQuestionCountries.toMutableList()
 
     override val questionVariants: List<QuestionVariant> = listOf(
@@ -15,9 +24,9 @@ class DrivingSideQuestionFactory(
         CountryInQuestionVariant()
     )
 
-    private inner class DrivingSideInQuestionVariant : QuestionVariant(numOfOptions) {
+    private inner class DrivingSideInQuestionVariant : QuestionVariant(numOfOptions, randomHelper) {
         override fun getQuestion(): QuizQuestion? {
-            val country = allRemainingRelevantQuestionCountries.randomOrNull() ?: return null
+            val country = randomHelper.randomOrNull(allRemainingRelevantQuestionCountries) ?: return null
             updateRemainingRelevantQuestionCountries(country)
 
             val questionSubject = country.drivingSide
@@ -36,9 +45,9 @@ class DrivingSideQuestionFactory(
         }
     }
 
-    private inner class CountryInQuestionVariant : QuestionVariant(numOfOptions = 2) {
+    private inner class CountryInQuestionVariant : QuestionVariant(numOfOptions = 2, randomHelper) {
         override fun getQuestion(): QuizQuestion? {
-            val country = allRemainingRelevantQuestionCountries.randomOrNull() ?: return null
+            val country = randomHelper.randomOrNull(allRemainingRelevantQuestionCountries) ?: return null
             updateRemainingRelevantQuestionCountries(country)
 
             val questionSubject = country.name
@@ -55,5 +64,4 @@ class DrivingSideQuestionFactory(
             )
         }
     }
-
 }

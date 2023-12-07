@@ -1,12 +1,14 @@
 package geotrainer.plugins
 
 import geotrainer.models.countries.Albania
-import io.ktor.http.*
-import io.ktor.server.application.*
-import io.ktor.server.plugins.statuspages.*
-import io.ktor.server.response.*
-import io.ktor.server.routing.*
-import kotlinx.serialization.Serializable
+import io.ktor.http.HttpStatusCode
+import io.ktor.server.application.Application
+import io.ktor.server.application.call
+import io.ktor.server.application.install
+import io.ktor.server.plugins.statuspages.StatusPages
+import io.ktor.server.response.respondText
+import io.ktor.server.routing.get
+import io.ktor.server.routing.routing
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
@@ -16,6 +18,7 @@ fun Application.configureRouting() {
             call.respondText(text = "500: $cause" , status = HttpStatusCode.InternalServerError)
         }
     }
+
     routing {
         get("/") {
             val json = Json { encodeDefaults = true }
@@ -23,6 +26,3 @@ fun Application.configureRouting() {
         }
     }
 }
-
-@Serializable
-data class A(val a: String = "a")

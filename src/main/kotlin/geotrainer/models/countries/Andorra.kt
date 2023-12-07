@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Andorra(
-    override val name: String =  "Andorra",
+    override val name: String = "Andorra",
     override val capitalCities: List<String> = listOf("Andorra la Vella"),
     override val isPartOfEuropeanUnion: Boolean = false,
     override val drivingSide: DrivingSide = DrivingSide.Right,

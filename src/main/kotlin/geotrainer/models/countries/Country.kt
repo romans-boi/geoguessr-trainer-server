@@ -1,7 +1,13 @@
 package geotrainer.models.countries
 
-import geotrainer.models.*
-
+import geotrainer.models.Continent
+import geotrainer.models.Currency
+import geotrainer.models.Domain
+import geotrainer.models.DrivingSide
+import geotrainer.utils.CountryProvider
+import geotrainer.utils.QuizGeneratorImpl
+import geotrainer.utils.RandomHelperImpl
+import geotrainer.utils.questionfactory.QuestionFactoryProviderImpl
 
 sealed interface Country {
     val name: String
@@ -170,11 +176,26 @@ sealed interface Country {
 
     companion object {
         val allCountries = AfricanCountry.getAllAfricanCountries() +
-                AsianCountry.getAllAsianCountries() +
-                SouthAmericanCountry.getAllSouthAmericanCountries() +
-                NorthAmericanCountry.getAllNorthAmericanCountries() +
-                OceanianCountry.getAllOceanianCountries() +
-                EuropeanCountry.getAllEuropeanCountries()
+            AsianCountry.getAllAsianCountries() +
+            SouthAmericanCountry.getAllSouthAmericanCountries() +
+            NorthAmericanCountry.getAllNorthAmericanCountries() +
+            OceanianCountry.getAllOceanianCountries() +
+            EuropeanCountry.getAllEuropeanCountries()
     }
 }
 
+fun main() {
+    val quizGen = QuizGeneratorImpl(
+        questionFactoryProvider = QuestionFactoryProviderImpl(
+            randomHelper = RandomHelperImpl,
+            countryProvider = CountryProvider { Country.allCountries }
+        )
+    )
+
+    quizGen.generateDomainNamesQuiz(Continent.Europe, 50, 4).map {
+        println("========= Question ========")
+        println("${it.question}")
+        println("Options: ${it.options}")
+        println("Answer: ${it.correctAnswer}")
+    }
+}
