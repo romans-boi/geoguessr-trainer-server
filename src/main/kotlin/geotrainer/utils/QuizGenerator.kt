@@ -4,6 +4,7 @@ import geotrainer.models.Continent
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.questionfactory.QuestionFactory
 import geotrainer.utils.questionfactory.QuestionFactoryProvider
+import org.koin.java.KoinJavaComponent.inject
 
 
 interface QuizGenerator {
@@ -92,26 +93,26 @@ internal class QuizGeneratorImpl(
 }
 
 
-//fun main() {
-//    //val quizGen = QuizGeneratorImpl(QuestionFactoryProvider())
-//
-//    //listOf(null).forEach { continent ->
-//        //println("================ Quiz for $continent ================")
-//        val quiz = quizGen.generateEuropeanUnionQuiz(
-//            numOfQuestions = 100,
-//            numOfOptions = 4
-//        )
-//
-//        quiz.map {
-//            println("============")
-//            println("Question: ${it.question}")
-//            println("Options: ${it.options}")
-//            println("Answer: ${it.correctAnswer}")
-//            println("===========")
-//            println()
-//        }
-//        println()
-//    //}
-//
-//    CapitalCitiesQuestionFactory(2, null)
-//}
+fun main() {
+    val quizGen: QuizGenerator by inject()
+
+    //listOf(null).forEach { continent ->
+        //println("================ Quiz for $continent ================")
+        val quiz = quizGen.generateEuropeanUnionQuiz(
+            numOfQuestions = 100,
+            numOfOptions = 4
+        )
+
+        quiz.map {
+            println("============")
+            println("Question: ${it.question}")
+            println("Options: ${it.options}")
+            println("Answer: ${it.correctAnswer}")
+            println("===========")
+            println()
+        }
+        println()
+    //}
+
+    CapitalCitiesQuestionFactory(2, null)
+}

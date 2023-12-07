@@ -1,5 +1,6 @@
 package geotrainer
 
+import geotrainer.plugins.configureDI
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
@@ -13,8 +14,8 @@ fun main() {
 }
 
 fun Application.module() {
+    configureDI()
     configureSerialization()
-    //configureDatabases()
     configureHTTP()
     configureRouting()
 }

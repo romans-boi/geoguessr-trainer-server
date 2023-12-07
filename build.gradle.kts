@@ -7,6 +7,8 @@ val exposed_version: String by project
 val h2_version: String by project
 val mockk_version: String by project
 
+val koin_version: String by project
+
 plugins {
     kotlin("jvm") version "1.9.21"
     id("io.ktor.plugin") version "2.3.6"
@@ -39,6 +41,11 @@ dependencies {
     implementation("io.ktor:ktor-server-default-headers-jvm")
     implementation("io.ktor:ktor-server-netty-jvm")
     implementation("ch.qos.logback:logback-classic:$logback_version")
+
+    // DI
+    implementation("io.insert-koin:koin-ktor:$koin_version")
+    implementation("io.insert-koin:koin-logger-slf4j:$koin_version")
+
     testImplementation("io.ktor:ktor-server-tests-jvm")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version")
     testImplementation("io.mockk:mockk:$mockk_version")
