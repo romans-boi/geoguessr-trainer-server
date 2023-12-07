@@ -1,9 +1,9 @@
 package geotrainer.di
 
-import geotrainer.domain.GenerateQuizUseCase
-import geotrainer.domain.GenerateQuizUseCaseImpl
 import geotrainer.feature.allquizzes.domain.AllQuizzesRepository
 import geotrainer.feature.allquizzes.domain.AllQuizzesRepositoryImpl
+import geotrainer.feature.quiz.domain.QuizRepository
+import geotrainer.feature.quiz.domain.QuizRepositoryImpl
 import geotrainer.models.countries.Country
 import geotrainer.utils.CountryProvider
 import geotrainer.utils.QuizGenerator
@@ -19,8 +19,8 @@ val appModule = module {
     single<CountryProvider> { CountryProvider { Country.allCountries } }
     single<QuestionFactoryProvider> { QuestionFactoryProviderImpl(get(), get()) }
 
-    single<GenerateQuizUseCase> { GenerateQuizUseCaseImpl() }
     single<QuizGenerator> { QuizGeneratorImpl(get()) }
 
     single<AllQuizzesRepository> { AllQuizzesRepositoryImpl() }
+    single<QuizRepository> { QuizRepositoryImpl(get()) }
 }

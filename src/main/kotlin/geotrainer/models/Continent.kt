@@ -8,4 +8,8 @@ enum class Continent {
     SouthAmerica,
     Europe,
     ;
+
+    companion object {
+        fun valueOfOrNull(value: String?) = Continent.entries.find { it.name == value }
+    }
 }

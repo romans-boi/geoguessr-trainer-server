@@ -1,6 +1,7 @@
 package geotrainer.plugins
 
 import geotrainer.feature.allquizzes.presentation.allQuizzesRouting
+import geotrainer.feature.quiz.presentation.quizRouting
 import geotrainer.models.countries.Albania
 import io.ktor.server.application.Application
 import io.ktor.server.application.call
@@ -18,5 +19,6 @@ fun Application.configureRouting() {
         }
 
         allQuizzesRouting()
+        quizRouting()
     }
 }

@@ -37,5 +37,7 @@ enum class QuizType(val title: String, val description: String) {
     ),
     ;
 
-    companion object
+    companion object {
+        fun valueOfOrNull(value: String) = entries.find { it.name == value }
+    }
 }
