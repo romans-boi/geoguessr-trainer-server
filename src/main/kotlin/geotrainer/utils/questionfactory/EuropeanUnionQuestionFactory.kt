@@ -9,8 +9,14 @@ class EuropeanUnionQuestionFactory(
     override val numOfOptions: Int,
     override val randomHelper: RandomHelper,
     countryProvider: CountryProvider
-) : QuestionFactory(continent = null, numOfOptions, randomHelper, countryProvider) {
-    override val allRelevantQuestionCountries: List<Country> = super.allRelevantQuestionCountries.filterIsInstance<Country.EuropeanCountry>()
+) : QuestionFactory(
+    continent = null,
+    numOfOptions,
+    randomHelper,
+    countryProvider
+) {
+    override val allRelevantQuestionCountries: List<Country> =
+        super.allRelevantQuestionCountries.filterIsInstance<Country.EuropeanCountry>()
     override val allRemainingRelevantQuestionCountries = allRelevantQuestionCountries.toMutableList()
 
     override val questionVariants: List<QuestionVariant> = listOf(
@@ -34,7 +40,6 @@ class EuropeanUnionQuestionFactory(
                 .map { it.name }
                 .processOptions(answerSubject)
 
-
             val prefix = if (isPartOfEuQuestionSubject) "" else " NOT"
 
             return finaliseQuestion(
@@ -54,11 +59,9 @@ class EuropeanUnionQuestionFactory(
             val questionSubject = country.name
             val isPartOfEuAnswerSubject = (country as? Country.EuropeanCountry)?.isPartOfEuropeanUnion ?: return null
 
-
             val trueString = "True"
             val falseString = "False"
             val possibleOptions = listOf(trueString, falseString)
-
 
             return finaliseQuestion(
                 question = "$questionSubject is part of the European Union",

@@ -4,8 +4,6 @@ import geotrainer.models.Continent
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.questionfactory.QuestionFactory
 import geotrainer.utils.questionfactory.QuestionFactoryProvider
-import org.koin.java.KoinJavaComponent.inject
-
 
 interface QuizGenerator {
     fun generateCapitalCitiesQuiz(
@@ -35,7 +33,6 @@ interface QuizGenerator {
 internal class QuizGeneratorImpl(
     private val questionFactoryProvider: QuestionFactoryProvider
 ) : QuizGenerator {
-
     override fun generateCapitalCitiesQuiz(
         continent: Continent?,
         numOfQuestions: Int,

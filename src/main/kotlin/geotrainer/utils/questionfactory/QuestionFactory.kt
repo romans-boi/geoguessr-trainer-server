@@ -28,22 +28,20 @@ abstract class QuestionFactory(
         correctAnswer: String,
         combineAnswerWithOptions: Boolean = true,
         shuffleOptions: Boolean = true,
-    ): QuizQuestion? {
-        return possibleOptions?.let { options ->
-            val processedOptions = if (combineAnswerWithOptions) {
-                options + correctAnswer
-            } else {
-                options
-            }.let {
-                if (shuffleOptions) randomHelper.shuffle(it) else it
-            }
-
-            QuizQuestion(
-                question = question,
-                options = processedOptions,
-                correctAnswer = correctAnswer
-            )
+    ): QuizQuestion? = possibleOptions?.let { options ->
+        val processedOptions = if (combineAnswerWithOptions) {
+            options + correctAnswer
+        } else {
+            options
+        }.let {
+            if (shuffleOptions) randomHelper.shuffle(it) else it
         }
+
+        QuizQuestion(
+            question = question,
+            options = processedOptions,
+            correctAnswer = correctAnswer
+        )
     }
 
     protected fun List<Country>.filterByContinent(continent: Continent?) = let { filteredList ->

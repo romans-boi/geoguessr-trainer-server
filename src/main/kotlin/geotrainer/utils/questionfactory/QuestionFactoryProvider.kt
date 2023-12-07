@@ -34,7 +34,12 @@ class QuestionFactoryProviderImpl(
     override fun getCapitalCitiesQuestionFactory(
         numOfOptions: Int,
         continent: Continent?,
-    ): CapitalCitiesQuestionFactory = CapitalCitiesQuestionFactory(continent, numOfOptions, randomHelper, countryProvider)
+    ): CapitalCitiesQuestionFactory = CapitalCitiesQuestionFactory(
+        continent,
+        numOfOptions,
+        randomHelper,
+        countryProvider
+    )
 
     override fun getDomainNamesQuestionFactory(
         numOfOptions: Int,

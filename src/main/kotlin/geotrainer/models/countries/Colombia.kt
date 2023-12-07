@@ -8,7 +8,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Colombia(
-    override val name: String =  "Colombia",
+    override val name: String = "Colombia",
     override val capitalCities: List<String> = listOf("Bogota"),
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Peso,

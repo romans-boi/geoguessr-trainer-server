@@ -11,7 +11,12 @@ class DomainNameQuestionFactory(
     override val numOfOptions: Int,
     override val randomHelper: RandomHelper,
     countryProvider: CountryProvider
-) : QuestionFactory(continent, numOfOptions, randomHelper, countryProvider) {
+) : QuestionFactory(
+    continent,
+    numOfOptions,
+    randomHelper,
+    countryProvider
+) {
     override val allRemainingRelevantQuestionCountries = allRelevantQuestionCountries.toMutableList()
 
     override val questionVariants: List<QuestionVariant> = listOf(
@@ -37,8 +42,8 @@ class DomainNameQuestionFactory(
                 //      - a country starts with same letter as the domain, or
                 //      - a country that has all letters that are in the domain name
                 processedDomainInQuestion.isNotBlank() &&
-                        (countryName.startsWith(processedDomainInQuestion.first(), ignoreCase = true)
-                                || processedDomainInQuestion.all { it in countryName })
+                    (countryName.startsWith(processedDomainInQuestion.first(), ignoreCase = true)||
+                        processedDomainInQuestion.all { it in countryName })
             }.distinct().ifEmpty { possibleOptions }
 
             similarOptions = randomHelper.shuffle(similarOptions).take(numOfOptions - 1)
@@ -60,7 +65,9 @@ class DomainNameQuestionFactory(
                 it != country.name
             }.distinct()
 
-            if (allOptions.isEmpty()) return null
+            if (allOptions.isEmpty()) {
+                return null
+            }
 
             return finaliseQuestion(
                 question = "What country uses the domain '$questionSubject'?",
@@ -95,8 +102,8 @@ class DomainNameQuestionFactory(
                     //  - Domain name's first letter followed by some letter in the name
                     //  - The country-in-question's first letter followed by another random letter
                     val possibleOptions = listOf(
-                        ".${firstLetterOfDomain}${currentLetter.lowercase()}",
-                        ".${firstLetterOfCountryInQuestion}${randomLetterFromCountryInQuestion}",
+                        ".$firstLetterOfDomain${currentLetter.lowercase()}",
+                        ".$firstLetterOfCountryInQuestion$randomLetterFromCountryInQuestion",
                     )
 
                     // Need to make sure we didn't generate the same option as the answer
@@ -105,7 +112,6 @@ class DomainNameQuestionFactory(
                 .distinct()
 
             similarOptions = randomHelper.shuffle(similarOptions).take(numOfOptions - 1)
-
 
             // Check if we need to add more options
             val numOfOptionsLeftToAdd = (numOfOptions - 1 - similarOptions.size).coerceAtLeast(minimumValue = 0)
@@ -123,7 +129,9 @@ class DomainNameQuestionFactory(
                 it != country.domain.id
             }.distinct()
 
-            if (allOptions.isEmpty()) return null
+            if (allOptions.isEmpty()) {
+                return null
+            }
 
             return finaliseQuestion(
                 question = "What domain is used in $questionSubject?",

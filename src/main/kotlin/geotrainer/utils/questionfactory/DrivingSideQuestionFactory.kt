@@ -11,7 +11,12 @@ class DrivingSideQuestionFactory(
     override val numOfOptions: Int,
     override val randomHelper: RandomHelper,
     countryProvider: CountryProvider
-) : QuestionFactory(continent, numOfOptions, randomHelper, countryProvider) {
+) : QuestionFactory(
+    continent,
+    numOfOptions,
+    randomHelper,
+    countryProvider
+) {
     override val allRemainingRelevantQuestionCountries = allRelevantQuestionCountries.toMutableList()
 
     override val questionVariants: List<QuestionVariant> = listOf(
@@ -59,5 +64,4 @@ class DrivingSideQuestionFactory(
             )
         }
     }
-
 }

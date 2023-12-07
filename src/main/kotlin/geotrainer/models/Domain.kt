@@ -94,6 +94,6 @@ enum class Domain(val id: String) {
     UnitedKingdom(id = ".uk"),
     UnitedStates(id = ".us"),
     Uruguay(id = ".uy"),
-    Vietnam(id = ".vn")
+    Vietnam(id = ".vn"),
     ;
 }

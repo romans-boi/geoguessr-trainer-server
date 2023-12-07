@@ -8,8 +8,8 @@ sealed class QuestionVariant(private val numOfOptions: Int, private val randomHe
 
     protected fun List<String>.processOptions(answer: String) =
         randomHelper.shuffle(
-            this.mapNotNull {
-                option -> option.takeIf { it != answer }
+            this.mapNotNull { option ->
+                option.takeIf { it != answer }
             }.distinct()
         )
             .take(numOfOptions - 1)

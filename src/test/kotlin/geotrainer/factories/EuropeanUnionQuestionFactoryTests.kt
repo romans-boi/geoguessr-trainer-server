@@ -1,22 +1,16 @@
 package geotrainer.factories
 
-import geotrainer.models.Continent
 import geotrainer.models.countries.Country
 import geotrainer.models.countries.Germany
 import geotrainer.models.countries.Guatemala
-import geotrainer.models.countries.Indonesia
 import geotrainer.models.countries.Latvia
-import geotrainer.models.countries.Netherlands
 import geotrainer.models.countries.Norway
 import geotrainer.models.countries.Russia
-import geotrainer.models.countries.Serbia
-import geotrainer.models.countries.Slovenia
 import geotrainer.models.countries.Sweden
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.AsyncTest
 import geotrainer.utils.CountryProvider
 import geotrainer.utils.RandomHelper
-import geotrainer.utils.questionfactory.DomainNameQuestionFactory
 import geotrainer.utils.questionfactory.EuropeanUnionQuestionFactory
 import geotrainer.utils.questionfactory.QuestionVariant
 import io.mockk.every

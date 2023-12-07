@@ -307,7 +307,6 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         )
     }
 
-
     // ========== Variant 2 - Country name in Question ===========
 
     @Test

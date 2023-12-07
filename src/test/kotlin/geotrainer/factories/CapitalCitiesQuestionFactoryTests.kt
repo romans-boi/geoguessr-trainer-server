@@ -16,9 +16,7 @@ import geotrainer.utils.questionfactory.CapitalCitiesQuestionFactory
 import geotrainer.utils.questionfactory.QuestionVariant
 import io.mockk.every
 import io.mockk.mockk
-import io.mockk.verify
 import org.junit.Test
-import java.lang.IllegalStateException
 import kotlin.test.assertEquals
 
 class CapitalCitiesQuestionFactoryTests: AsyncTest() {
@@ -211,7 +209,6 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
             question
         )
     }
-
 
     // ========== Variant 2 - Country name in Question ===========
 

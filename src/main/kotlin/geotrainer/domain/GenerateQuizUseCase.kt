@@ -13,7 +13,7 @@ interface GenerateQuizUseCase {
     ): List<QuizQuestion>
 }
 
-internal class GenerateQuizUseCaseImpl: GenerateQuizUseCase {
+internal object GenerateQuizUseCaseImpl: GenerateQuizUseCase {
     override fun generateDataForQuiz(
         quizType: QuizType,
         continent: Continent?,

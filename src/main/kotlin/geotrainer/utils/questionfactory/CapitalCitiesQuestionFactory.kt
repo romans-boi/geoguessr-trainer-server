@@ -10,7 +10,12 @@ class CapitalCitiesQuestionFactory(
     override val numOfOptions: Int,
     override val randomHelper: RandomHelper,
     countryProvider: CountryProvider
-) : QuestionFactory(continent, numOfOptions, randomHelper, countryProvider) {
+) : QuestionFactory(
+    continent,
+    numOfOptions,
+    randomHelper,
+    countryProvider
+) {
     override val allRelevantQuestionCountries =
         super.allRelevantQuestionCountries.filter { it.capitalCities != null }
 
