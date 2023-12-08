@@ -1,5 +1,7 @@
 package geotrainer.factories
 
+import geotrainer.feature.quiz.domain.questionfactory.DrivingSideQuestionFactory
+import geotrainer.feature.quiz.domain.questionfactory.QuestionVariant
 import geotrainer.models.Continent
 import geotrainer.models.countries.Country
 import geotrainer.models.countries.France
@@ -12,11 +14,10 @@ import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.AsyncTest
 import geotrainer.utils.CountryProvider
 import geotrainer.utils.RandomHelper
-import geotrainer.feature.quiz.domain.questionfactory.DrivingSideQuestionFactory
-import geotrainer.feature.quiz.domain.questionfactory.QuestionVariant
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.Test
+
 import kotlin.test.assertEquals
 
 class DrivingSideQuestionFactoryTests: AsyncTest() {

@@ -1,13 +1,13 @@
 package geotrainer.models.countries
 
+import geotrainer.feature.quiz.domain.QuizGeneratorImpl
+import geotrainer.feature.quiz.domain.questionfactory.QuestionFactoryProviderImpl
 import geotrainer.models.Continent
 import geotrainer.models.Currency
 import geotrainer.models.Domain
 import geotrainer.models.DrivingSide
 import geotrainer.utils.CountryProvider
-import geotrainer.feature.quiz.domain.QuizGeneratorImpl
 import geotrainer.utils.RandomHelperImpl
-import geotrainer.feature.quiz.domain.questionfactory.QuestionFactoryProviderImpl
 
 sealed interface Country {
     val name: String

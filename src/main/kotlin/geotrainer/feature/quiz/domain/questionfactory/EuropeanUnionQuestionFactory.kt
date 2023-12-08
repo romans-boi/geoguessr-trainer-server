@@ -26,9 +26,7 @@ class EuropeanUnionQuestionFactory(
 
     private inner class EuropeanUnionInQuestionVariant : QuestionVariant(numOfOptions, randomHelper) {
         override fun getQuestion(): QuizQuestion? {
-            val country = randomHelper.randomOrNull(allRemainingRelevantQuestionCountries) ?: return null
-
-            updateRemainingRelevantQuestionCountries(country)
+            val country = chooseSimpleCountry() ?: return null
 
             val isPartOfEuQuestionSubject = (country as? Country.EuropeanCountry)?.isPartOfEuropeanUnion ?: return null
             val answerSubject = country.name
@@ -52,9 +50,7 @@ class EuropeanUnionQuestionFactory(
 
     private inner class CountryNameInQuestionVariant : QuestionVariant(numOfOptions = 2, randomHelper) {
         override fun getQuestion(): QuizQuestion? {
-            val country = randomHelper.randomOrNull(allRemainingRelevantQuestionCountries) ?: return null
-
-            updateRemainingRelevantQuestionCountries(country)
+            val country = chooseSimpleCountry() ?: return null
 
             val questionSubject = country.name
             val isPartOfEuAnswerSubject = (country as? Country.EuropeanCountry)?.isPartOfEuropeanUnion ?: return null

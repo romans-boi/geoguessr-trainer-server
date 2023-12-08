@@ -26,8 +26,7 @@ class DrivingSideQuestionFactory(
 
     private inner class DrivingSideInQuestionVariant : QuestionVariant(numOfOptions, randomHelper) {
         override fun getQuestion(): QuizQuestion? {
-            val country = randomHelper.randomOrNull(allRemainingRelevantQuestionCountries) ?: return null
-            updateRemainingRelevantQuestionCountries(country)
+            val country = chooseSimpleCountry() ?: return null
 
             val questionSubject = country.drivingSide
             val answerSubject = country.name
@@ -47,8 +46,7 @@ class DrivingSideQuestionFactory(
 
     private inner class CountryInQuestionVariant : QuestionVariant(numOfOptions = 2, randomHelper) {
         override fun getQuestion(): QuizQuestion? {
-            val country = randomHelper.randomOrNull(allRemainingRelevantQuestionCountries) ?: return null
-            updateRemainingRelevantQuestionCountries(country)
+            val country = chooseSimpleCountry() ?: return null
 
             val questionSubject = country.name
             val answerSubject = country.drivingSide.name
