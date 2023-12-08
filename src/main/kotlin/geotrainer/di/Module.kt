@@ -6,12 +6,12 @@ import geotrainer.feature.quiz.domain.QuizRepository
 import geotrainer.feature.quiz.domain.QuizRepositoryImpl
 import geotrainer.models.countries.Country
 import geotrainer.utils.CountryProvider
-import geotrainer.utils.QuizGenerator
-import geotrainer.utils.QuizGeneratorImpl
+import geotrainer.feature.quiz.domain.QuizGenerator
+import geotrainer.feature.quiz.domain.QuizGeneratorImpl
 import geotrainer.utils.RandomHelper
 import geotrainer.utils.RandomHelperImpl
-import geotrainer.utils.questionfactory.QuestionFactoryProvider
-import geotrainer.utils.questionfactory.QuestionFactoryProviderImpl
+import geotrainer.feature.quiz.domain.questionfactory.QuestionFactoryProvider
+import geotrainer.feature.quiz.domain.questionfactory.QuestionFactoryProviderImpl
 import org.koin.dsl.module
 
 val appModule = module {

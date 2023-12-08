@@ -1,4 +1,4 @@
-package geotrainer.utils.questionfactory
+package geotrainer.feature.quiz.domain.questionfactory
 
 import geotrainer.models.countries.Country
 import geotrainer.models.quiz.QuizQuestion

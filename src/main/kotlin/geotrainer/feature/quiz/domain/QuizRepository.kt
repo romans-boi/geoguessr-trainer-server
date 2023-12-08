@@ -3,7 +3,6 @@ package geotrainer.feature.quiz.domain
 import geotrainer.models.Continent
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.models.quiz.QuizType
-import geotrainer.utils.QuizGenerator
 
 interface QuizRepository {
     fun generateQuiz(

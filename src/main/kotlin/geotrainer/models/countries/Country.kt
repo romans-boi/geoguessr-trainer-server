@@ -5,9 +5,9 @@ import geotrainer.models.Currency
 import geotrainer.models.Domain
 import geotrainer.models.DrivingSide
 import geotrainer.utils.CountryProvider
-import geotrainer.utils.QuizGeneratorImpl
+import geotrainer.feature.quiz.domain.QuizGeneratorImpl
 import geotrainer.utils.RandomHelperImpl
-import geotrainer.utils.questionfactory.QuestionFactoryProviderImpl
+import geotrainer.feature.quiz.domain.questionfactory.QuestionFactoryProviderImpl
 
 sealed interface Country {
     val name: String

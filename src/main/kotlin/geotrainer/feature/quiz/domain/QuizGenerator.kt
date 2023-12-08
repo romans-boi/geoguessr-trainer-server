@@ -1,9 +1,9 @@
-package geotrainer.utils
+package geotrainer.feature.quiz.domain
 
 import geotrainer.models.Continent
 import geotrainer.models.quiz.QuizQuestion
-import geotrainer.utils.questionfactory.QuestionFactory
-import geotrainer.utils.questionfactory.QuestionFactoryProvider
+import geotrainer.feature.quiz.domain.questionfactory.QuestionFactory
+import geotrainer.feature.quiz.domain.questionfactory.QuestionFactoryProvider
 
 interface QuizGenerator {
     fun generateCapitalCitiesQuiz(
