@@ -1,4 +1,4 @@
-package geotrainer.utils.questionfactory
+package geotrainer.feature.quiz.domain.questionfactory
 
 import geotrainer.models.Continent
 import geotrainer.models.quiz.QuizQuestion
@@ -28,15 +28,16 @@ class CapitalCitiesQuestionFactory(
 
     private inner class CapitalCityInQuestionVariant : QuestionVariant(numOfOptions, randomHelper) {
         override fun getQuestion(): QuizQuestion? {
-            val country = randomHelper.randomOrNull(allRemainingRelevantQuestionCountries) ?: return null
-            updateRemainingRelevantQuestionCountries(country)
+            val country = chooseSimpleCountry() ?: return null
 
             val questionSubject = randomHelper.randomOrNull(country.capitalCities) ?: return null
             val answerSubject = country.name
 
-            val possibleOptions = (allRelevantQuestionCountries - country)
-                .map { it.name }
-                .processOptions(answerSubject)
+            val possibleOptions = chooseSimpleOptions(
+                selectedCountry = country,
+                answer = answerSubject,
+                selector = { it.name }
+            )
 
             return finaliseQuestion(
                 "$questionSubject is the capital of...",
@@ -48,15 +49,16 @@ class CapitalCitiesQuestionFactory(
 
     private inner class CountryNameInQuestionVariant : QuestionVariant(numOfOptions, randomHelper) {
         override fun getQuestion(): QuizQuestion? {
-            val country = randomHelper.randomOrNull(allRemainingRelevantQuestionCountries) ?: return null
-            updateRemainingRelevantQuestionCountries(country)
+            val country = chooseSimpleCountry() ?: return null
 
             val questionSubject = country.name
             val answerSubject = randomHelper.randomOrNull(country.capitalCities) ?: return null
 
-            val possibleOptions = (allRelevantQuestionCountries - country)
-                .mapNotNull { randomHelper.randomOrNull(it.capitalCities) }
-                .processOptions(answerSubject)
+            val possibleOptions = chooseSimpleOptions(
+                selectedCountry = country,
+                answer = answerSubject,
+                selector = { randomHelper.randomOrNull(it.capitalCities) }
+            )
 
             return finaliseQuestion("What is the capital of $questionSubject?", possibleOptions, answerSubject)
         }

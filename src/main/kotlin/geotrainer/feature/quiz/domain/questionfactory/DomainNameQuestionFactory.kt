@@ -1,4 +1,4 @@
-package geotrainer.utils.questionfactory
+package geotrainer.feature.quiz.domain.questionfactory
 
 import geotrainer.models.Continent
 import geotrainer.models.Domain
@@ -26,8 +26,7 @@ class DomainNameQuestionFactory(
 
     private inner class DomainNameInQuestionVariant : QuestionVariant(numOfOptions, randomHelper) {
         override fun getQuestion(): QuizQuestion? {
-            val country = randomHelper.randomOrNull(allRemainingRelevantQuestionCountries) ?: return null
-            updateRemainingRelevantQuestionCountries(country)
+            val country = chooseSimpleCountry() ?: return null
 
             val questionSubject = country.domain.id
             val answerSubject = country.name
@@ -79,8 +78,7 @@ class DomainNameQuestionFactory(
 
     private inner class CountryNameInQuestionVariant : QuestionVariant(numOfOptions, randomHelper) {
         override fun getQuestion(): QuizQuestion? {
-            val country = randomHelper.randomOrNull(allRemainingRelevantQuestionCountries) ?: return null
-            updateRemainingRelevantQuestionCountries(country)
+            val country = chooseSimpleCountry() ?: return null
 
             val questionSubject = country.name
             val answerSubject = country.domain.id

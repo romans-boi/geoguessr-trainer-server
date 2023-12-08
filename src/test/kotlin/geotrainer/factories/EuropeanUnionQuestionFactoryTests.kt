@@ -1,5 +1,7 @@
 package geotrainer.factories
 
+import geotrainer.feature.quiz.domain.questionfactory.EuropeanUnionQuestionFactory
+import geotrainer.feature.quiz.domain.questionfactory.QuestionVariant
 import geotrainer.models.countries.Country
 import geotrainer.models.countries.Germany
 import geotrainer.models.countries.Guatemala
@@ -11,11 +13,10 @@ import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.AsyncTest
 import geotrainer.utils.CountryProvider
 import geotrainer.utils.RandomHelper
-import geotrainer.utils.questionfactory.EuropeanUnionQuestionFactory
-import geotrainer.utils.questionfactory.QuestionVariant
 import io.mockk.every
 import io.mockk.mockk
 import org.junit.Test
+
 import kotlin.test.assertEquals
 
 class EuropeanUnionQuestionFactoryTests: AsyncTest() {
