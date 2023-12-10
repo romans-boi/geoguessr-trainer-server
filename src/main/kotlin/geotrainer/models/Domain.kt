@@ -64,7 +64,6 @@ enum class Domain(val id: String) {
     NorthMarianaIslands(id = ".mp"),
     Norway(id = ".no"),
     Pakistan(id = ".pk"),
-    Panama(id = ".pa"),
     Peru(id = ".pe"),
     Philippines(id = ".ph"),
     Poland(id = ".pl"),
@@ -94,6 +93,5 @@ enum class Domain(val id: String) {
     UnitedKingdom(id = ".uk"),
     UnitedStates(id = ".us"),
     Uruguay(id = ".uy"),
-    Vietnam(id = ".vn"),
     ;
 }
