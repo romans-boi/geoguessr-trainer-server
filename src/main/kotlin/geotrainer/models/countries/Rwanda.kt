@@ -1,5 +1,6 @@
 package geotrainer.models.countries
 
+import geotrainer.models.CameraGeneration
 import geotrainer.models.Currency
 import geotrainer.models.Domain
 import geotrainer.models.DrivingSide
@@ -14,5 +15,9 @@ data class Rwanda(
     override val domain: Domain = Domain.Rwanda,
     override val majorCities: List<String> = listOf("TODO"),
     override val carPlates: List<String> = listOf("TODO"),
-    override val bollards: List<String> = listOf("TODO")
+    override val bollards: List<String>? = null,
+
+    override val cameraGenerations: List<CameraGeneration> = listOf(
+        CameraGeneration.Gen4,
+    )
 ) : Country.AfricanCountry()

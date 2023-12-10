@@ -14,13 +14,14 @@ abstract class QuestionFactory(
 ) {
     /**
      * The pool of all countries that the question factory can use to generate questions with
-    * */
+     * */
     protected open val allRelevantQuestionCountries: List<Country> = countryProvider
         .getAllCountries()
         .filterByContinent(continent)
 
     /**
-     * The remaining countries that the question factory can select from (to try to avoid repetitions as much as possible)
+     * The remaining countries that the question factory can select from (to try to avoid repetitions as much
+     * as possible)
      * */
     protected abstract val allRemainingRelevantQuestionCountries: MutableList<Country>
 
@@ -79,7 +80,6 @@ abstract class QuestionFactory(
         )
             .take(numOfOptions - 1)
             .takeIf { it.isNotEmpty() }
-
 
     /**
      * Finalises a question into a format that can be returned. This processing includes:
