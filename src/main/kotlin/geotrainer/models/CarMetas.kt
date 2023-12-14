@@ -33,5 +33,5 @@ enum class CarMeta {
     ColorBlack,
     ColorBlue,
     ColorRed,
-
+    ;
 }

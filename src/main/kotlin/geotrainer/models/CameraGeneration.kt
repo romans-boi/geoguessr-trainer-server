@@ -7,4 +7,5 @@ enum class CameraGeneration {
     Gen4,
     Trekker,
     LowCam,
+    ;
 }

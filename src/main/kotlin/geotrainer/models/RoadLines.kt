@@ -10,4 +10,5 @@ enum class RoadLines {
     WhiteSideGreenWhiteMiddle,
     RedSideWhiteMiddle,
     RedSideYellowMiddle,
+    ;
 }

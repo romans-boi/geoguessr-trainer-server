@@ -8,7 +8,6 @@ import geotrainer.models.Domain
 import geotrainer.models.DrivingSide
 import geotrainer.models.PhoneDialingCode
 import geotrainer.models.RoadLines
-import geotrainer.models.Url
 import kotlinx.serialization.Serializable
 
 @Serializable
