@@ -1,10 +1,13 @@
 package geotrainer.models.countries
 
 import geotrainer.models.CameraGeneration
+import geotrainer.models.CarType
 import geotrainer.models.Continent
 import geotrainer.models.Currency
 import geotrainer.models.Domain
 import geotrainer.models.DrivingSide
+import geotrainer.models.PhoneDialingCode
+import geotrainer.models.RoadLines
 
 sealed interface Country {
     val name: String
@@ -13,6 +16,7 @@ sealed interface Country {
     val drivingSide: DrivingSide
     val currency: Currency
     val domain: Domain
+    val phoneDialingCodes: List<PhoneDialingCode>?
 
     val majorCities: List<String>
 
@@ -23,6 +27,10 @@ sealed interface Country {
     val bollards: List<String>?
 
     val cameraGenerations: List<CameraGeneration>
+
+    val roadLines: List<RoadLines>?
+
+    val carTypes: List<CarType>?
 
     sealed class AfricanCountry : Country {
         final override val continent: Continent = Continent.Africa

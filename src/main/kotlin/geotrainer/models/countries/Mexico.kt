@@ -4,6 +4,8 @@ import geotrainer.models.CameraGeneration
 import geotrainer.models.Currency
 import geotrainer.models.Domain
 import geotrainer.models.DrivingSide
+import geotrainer.models.PhoneDialingCode
+import geotrainer.models.RoadLines
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -16,6 +18,7 @@ data class Mexico(
     override val majorCities: List<String> = listOf("TODO"),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
+    override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Mexico),
 
     override val cameraGenerations: List<CameraGeneration> = listOf(
         CameraGeneration.Gen1,
@@ -23,5 +26,11 @@ data class Mexico(
         CameraGeneration.Gen3,
         CameraGeneration.Gen4,
         CameraGeneration.Trekker
-    )
+    ),
+
+    override val roadLines: List<RoadLines> = listOf(
+        RoadLines.WhiteSideYellowMiddle,
+        RoadLines.YellowSideWhiteMiddle,
+        RoadLines.WhiteSideWhiteMiddle,
+    ),
 ) : Country.NorthAmericanCountry()
