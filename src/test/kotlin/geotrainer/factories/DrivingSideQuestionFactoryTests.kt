@@ -10,6 +10,8 @@ import geotrainer.models.countries.Japan
 import geotrainer.models.countries.Malaysia
 import geotrainer.models.countries.Sweden
 import geotrainer.models.countries.UnitedStates
+import geotrainer.models.quiz.OptionData
+import geotrainer.models.quiz.QuestionData
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.AsyncTest
 import geotrainer.utils.CountryProvider
@@ -20,7 +22,7 @@ import org.junit.Test
 
 import kotlin.test.assertEquals
 
-class DrivingSideQuestionFactoryTests: AsyncTest() {
+class DrivingSideQuestionFactoryTests : AsyncTest() {
     private val numOfOptions = 4
     private val randomHelper: RandomHelper = mockk<RandomHelper>()
     private val countryProvider: CountryProvider = mockk<CountryProvider>()
@@ -73,9 +75,11 @@ class DrivingSideQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "Which country drives on the left?",
-                options = expectedOptions + indonesia.name,
-                correctAnswer = indonesia.name
+                QuestionData(question = "Which country drives on the left?"),
+                OptionData.Text(
+                    options = expectedOptions + indonesia.name,
+                    correctAnswer = indonesia.name
+                )
             ),
             question
         )
@@ -117,9 +121,11 @@ class DrivingSideQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "Which country drives on the right?",
-                options = expectedOptions + sweden.name,
-                correctAnswer = sweden.name
+                QuestionData(question = "Which country drives on the right?"),
+                OptionData.Text(
+                    options = expectedOptions + sweden.name,
+                    correctAnswer = sweden.name
+                )
             ),
             question
         )
@@ -160,9 +166,11 @@ class DrivingSideQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "Which country drives on the left?",
-                options = expectedOptions + indonesia.name,
-                correctAnswer = indonesia.name
+                QuestionData(question = "Which country drives on the left?"),
+                OptionData.Text(
+                    options = expectedOptions + indonesia.name,
+                    correctAnswer = indonesia.name
+                )
             ),
             question
         )
@@ -200,9 +208,11 @@ class DrivingSideQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "Which country drives on the left?",
-                options = expectedOptions + indonesia.name,
-                correctAnswer = indonesia.name
+                QuestionData(question = "Which country drives on the left?"),
+                OptionData.Text(
+                    options = expectedOptions + indonesia.name,
+                    correctAnswer = indonesia.name
+                )
             ),
             question
         )
@@ -261,9 +271,11 @@ class DrivingSideQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What driving side of the road is used in ${indonesia.name}?",
-                options = expectedOptions,
-                correctAnswer = "Left"
+                QuestionData(question = "What driving side of the road is used in ${indonesia.name}?"),
+                OptionData.Text(
+                    options = expectedOptions,
+                    correctAnswer = "Left"
+                )
             ),
             question
         )
@@ -298,9 +310,11 @@ class DrivingSideQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What driving side of the road is used in ${usa.name}?",
-                options = expectedOptions,
-                correctAnswer = "Right"
+                QuestionData(question = "What driving side of the road is used in ${usa.name}?"),
+                OptionData.Text(
+                    options = expectedOptions,
+                    correctAnswer = "Right"
+                )
             ),
             question
         )
@@ -326,6 +340,6 @@ class DrivingSideQuestionFactoryTests: AsyncTest() {
         val question = sut.getQuestion()
 
         /* Verify */
-        assertEquals(null,question)
+        assertEquals(null, question)
     }
 }

@@ -13,6 +13,8 @@ import geotrainer.models.countries.Netherlands
 import geotrainer.models.countries.Serbia
 import geotrainer.models.countries.Slovenia
 import geotrainer.models.countries.Sweden
+import geotrainer.models.quiz.OptionData
+import geotrainer.models.quiz.QuestionData
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.AsyncTest
 import geotrainer.utils.CountryProvider
@@ -24,7 +26,7 @@ import org.junit.Test
 
 import kotlin.test.assertEquals
 
-class DomainNameQuestionFactoryTests: AsyncTest() {
+class DomainNameQuestionFactoryTests : AsyncTest() {
     private val numOfOptions = 4
     private val randomHelper: RandomHelper = mockk<RandomHelper>()
     private val countryProvider: CountryProvider = mockk<CountryProvider>()
@@ -87,9 +89,11 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What country uses the domain '${sweden.domain.value}'?",
-                options = expectedOptions + sweden.name,
-                correctAnswer = sweden.name
+                QuestionData(question = "What country uses the domain '${sweden.domain.value}'?"),
+                OptionData.Text(
+                    options = expectedOptions + sweden.name,
+                    correctAnswer = sweden.name
+                )
             ),
             question
         )
@@ -170,9 +174,11 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What country uses the domain '${sweden.domain.value}'?",
-                options = expectedOptions + sweden.name,
-                correctAnswer = sweden.name
+                QuestionData(question = "What country uses the domain '${sweden.domain.value}'?"),
+                OptionData.Text(
+                    options = expectedOptions + sweden.name,
+                    correctAnswer = sweden.name
+                )
             ),
             question
         )
@@ -225,9 +231,11 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What country uses the domain '${sweden.domain.value}'?",
-                options = expectedOptions + sweden.name,
-                correctAnswer = sweden.name
+                QuestionData(question = "What country uses the domain '${sweden.domain.value}'?"),
+                OptionData.Text(
+                    options = expectedOptions + sweden.name,
+                    correctAnswer = sweden.name
+                )
             ),
             question
         )
@@ -261,7 +269,7 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         val question = sut.getQuestion()
 
         /* Verify */
-        assertEquals(null ,question)
+        assertEquals(null, question)
     }
 
     @Test
@@ -289,7 +297,7 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         }
 
         // No duplications
-        val expectedOptions = listOf(serbia.name,)
+        val expectedOptions = listOf(serbia.name)
 
         every { randomHelper.randomOrNull(any<List<QuestionVariant>>()) } returns sut.questionVariants[0]
         every { randomHelper.randomOrNull(allRelevantQuestionCountries) } returns sweden
@@ -300,9 +308,11 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What country uses the domain '${sweden.domain.value}'?",
-                options = expectedOptions + sweden.name,
-                correctAnswer = sweden.name
+                QuestionData(question = "What country uses the domain '${sweden.domain.value}'?"),
+                OptionData.Text(
+                    options = expectedOptions + sweden.name,
+                    correctAnswer = sweden.name
+                )
             ),
             question
         )
@@ -357,9 +367,11 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What domain is used in ${croatia.name}?",
-                options = possibleOptions + croatia.domain.value,
-                correctAnswer = croatia.domain.value
+                QuestionData(question = "What domain is used in ${croatia.name}?"),
+                OptionData.Text(
+                    options = possibleOptions + croatia.domain.value,
+                    correctAnswer = croatia.domain.value
+                )
             ),
             question
         )
@@ -439,9 +451,11 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What domain is used in ${croatia.name}?",
-                options = possibleOptions + possibleOtherOptions[0] + croatia.domain.value,
-                correctAnswer = croatia.domain.value
+                QuestionData(question = "What domain is used in ${croatia.name}?"),
+                OptionData.Text(
+                    options = possibleOptions + possibleOtherOptions[0] + croatia.domain.value,
+                    correctAnswer = croatia.domain.value
+                )
             ),
             question
         )
@@ -499,9 +513,11 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What domain is used in ${croatia.name}?",
-                options = possibleOptions + croatia.domain.value,
-                correctAnswer = croatia.domain.value
+                QuestionData(question = "What domain is used in ${croatia.name}?"),
+                OptionData.Text(
+                    options = possibleOptions + croatia.domain.value,
+                    correctAnswer = croatia.domain.value
+                )
             ),
             question
         )

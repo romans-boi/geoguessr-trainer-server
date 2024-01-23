@@ -9,6 +9,8 @@ import geotrainer.models.countries.Latvia
 import geotrainer.models.countries.Norway
 import geotrainer.models.countries.Russia
 import geotrainer.models.countries.Sweden
+import geotrainer.models.quiz.OptionData
+import geotrainer.models.quiz.QuestionData
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.AsyncTest
 import geotrainer.utils.CountryProvider
@@ -19,7 +21,7 @@ import org.junit.Test
 
 import kotlin.test.assertEquals
 
-class EuropeanUnionQuestionFactoryTests: AsyncTest() {
+class EuropeanUnionQuestionFactoryTests : AsyncTest() {
     private val numOfOptions = 4
     private val randomHelper: RandomHelper = mockk<RandomHelper>()
     private val countryProvider: CountryProvider = mockk<CountryProvider>()
@@ -74,9 +76,11 @@ class EuropeanUnionQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "Which country is NOT in the European Union?",
-                options = expectedOptions + norway.name,
-                correctAnswer = norway.name
+                QuestionData(question = "Which country is NOT in the European Union?"),
+                OptionData.Text(
+                    options = expectedOptions + norway.name,
+                    correctAnswer = norway.name
+                )
             ),
             question
         )
@@ -115,9 +119,11 @@ class EuropeanUnionQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "Which country is in the European Union?",
-                options = expectedOptions + sweden.name,
-                correctAnswer = sweden.name
+                QuestionData(question = "Which country is in the European Union?"),
+                OptionData.Text(
+                    options = expectedOptions + sweden.name,
+                    correctAnswer = sweden.name
+                )
             ),
             question
         )
@@ -165,7 +171,7 @@ class EuropeanUnionQuestionFactoryTests: AsyncTest() {
 
         val allRelevantQuestionCountries: List<Country> = testCountries.filterIsInstance<Country.EuropeanCountry>()
 
-        val expectedOptions = listOf(latvia.name,)
+        val expectedOptions = listOf(latvia.name)
 
         every { randomHelper.randomOrNull(any<List<QuestionVariant>>()) } returns sut.questionVariants[0]
         every { randomHelper.randomOrNull(allRelevantQuestionCountries) } returns norway
@@ -176,9 +182,11 @@ class EuropeanUnionQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "Which country is NOT in the European Union?",
-                options = expectedOptions + norway.name,
-                correctAnswer = norway.name
+                QuestionData(question = "Which country is NOT in the European Union?"),
+                OptionData.Text(
+                    options = expectedOptions + norway.name,
+                    correctAnswer = norway.name
+                )
             ),
             question
         )
@@ -214,9 +222,11 @@ class EuropeanUnionQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "${norway.name} is part of the European Union",
-                options = expectedOptions,
-                correctAnswer = "False"
+                QuestionData(question = "${norway.name} is part of the European Union"),
+                OptionData.Text(
+                    options = expectedOptions,
+                    correctAnswer = "False"
+                )
             ),
             question
         )
