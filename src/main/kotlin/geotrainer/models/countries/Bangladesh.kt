@@ -1,14 +1,11 @@
 package geotrainer.models.countries
 
 import geotrainer.models.CameraGeneration
-import geotrainer.models.CarMeta
-import geotrainer.models.CarType
 import geotrainer.models.Currency
 import geotrainer.models.Domain
 import geotrainer.models.DrivingSide
 import geotrainer.models.PhoneDialingCode
 import geotrainer.models.RoadLines
-import geotrainer.models.Url
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -33,15 +30,4 @@ data class Bangladesh(
         RoadLines.WhiteSideWhiteMiddle,
     ),
 
-    override val carTypes: List<CarType>? = listOf(
-        CarType.Standard(
-            metas = setOf(CarMeta.ColorWhite),
-            imageUrl = null
-        ),
-
-        CarType.Standard(
-            metas = setOf(CarMeta.RoofRackStandard, CarMeta.FrontMirrors),
-            imageUrl = Url(value = "bangladesh-rack")
-        ),
-    )
 ) : Country.AsianCountry()

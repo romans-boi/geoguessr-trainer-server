@@ -1,8 +1,6 @@
 package geotrainer.models.countries
 
 import geotrainer.models.CameraGeneration
-import geotrainer.models.CarMeta
-import geotrainer.models.CarType
 import geotrainer.models.Currency
 import geotrainer.models.Domain
 import geotrainer.models.DrivingSide
@@ -30,10 +28,4 @@ data class Bhutan(
         RoadLines.WhiteSideWhiteMiddle,
     ),
 
-    override val carTypes: List<CarType>? = listOf(
-        CarType.Standard(
-            metas = setOf(CarMeta.ColorWhite),
-            imageUrl = null
-        ),
-    )
 ) : Country.AsianCountry()

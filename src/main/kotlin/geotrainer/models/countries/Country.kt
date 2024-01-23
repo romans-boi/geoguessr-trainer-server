@@ -1,7 +1,6 @@
 package geotrainer.models.countries
 
 import geotrainer.models.CameraGeneration
-import geotrainer.models.CarType
 import geotrainer.models.Continent
 import geotrainer.models.Currency
 import geotrainer.models.Domain
@@ -29,8 +28,6 @@ sealed interface Country {
     val cameraGenerations: List<CameraGeneration>
 
     val roadLines: List<RoadLines>?
-
-    val carTypes: List<CarType>?
 
     sealed class AfricanCountry : Country {
         final override val continent: Continent = Continent.Africa
