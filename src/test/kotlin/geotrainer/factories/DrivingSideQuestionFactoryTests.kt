@@ -10,7 +10,7 @@ import geotrainer.models.countries.Japan
 import geotrainer.models.countries.Malaysia
 import geotrainer.models.countries.Sweden
 import geotrainer.models.countries.UnitedStates
-import geotrainer.models.quiz.QuestionType
+import geotrainer.models.quiz.QuestionData
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.AsyncTest
 import geotrainer.utils.CountryProvider
@@ -74,7 +74,7 @@ class DrivingSideQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                QuestionType(question = "Which country drives on the left?"),
+                QuestionData(question = "Which country drives on the left?"),
                 options = expectedOptions + indonesia.name,
                 correctAnswer = indonesia.name
             ),
@@ -118,7 +118,7 @@ class DrivingSideQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                QuestionType(question = "Which country drives on the right?"),
+                QuestionData(question = "Which country drives on the right?"),
                 options = expectedOptions + sweden.name,
                 correctAnswer = sweden.name
             ),
@@ -161,7 +161,7 @@ class DrivingSideQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                QuestionType(question = "Which country drives on the left?"),
+                QuestionData(question = "Which country drives on the left?"),
                 options = expectedOptions + indonesia.name,
                 correctAnswer = indonesia.name
             ),
@@ -201,7 +201,7 @@ class DrivingSideQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                QuestionType(question = "Which country drives on the left?"),
+                QuestionData(question = "Which country drives on the left?"),
                 options = expectedOptions + indonesia.name,
                 correctAnswer = indonesia.name
             ),
@@ -262,7 +262,7 @@ class DrivingSideQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                QuestionType(question = "What driving side of the road is used in ${indonesia.name}?"),
+                QuestionData(question = "What driving side of the road is used in ${indonesia.name}?"),
                 options = expectedOptions,
                 correctAnswer = "Left"
             ),
@@ -299,7 +299,7 @@ class DrivingSideQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                QuestionType(question = "What driving side of the road is used in ${usa.name}?"),
+                QuestionData(question = "What driving side of the road is used in ${usa.name}?"),
                 options = expectedOptions,
                 correctAnswer = "Right"
             ),

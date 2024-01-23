@@ -1,7 +1,7 @@
 package geotrainer.feature.quiz.domain.questionfactory
 
 import geotrainer.models.countries.Country
-import geotrainer.models.quiz.QuestionType
+import geotrainer.models.quiz.QuestionData
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.CountryProvider
 import geotrainer.utils.RandomHelper
@@ -42,7 +42,7 @@ class EuropeanUnionQuestionFactory(
             val prefix = if (isPartOfEuQuestionSubject) "" else " NOT"
 
             return finaliseQuestion(
-                QuestionType(question = "Which country is$prefix in the European Union?"),
+                QuestionData(question = "Which country is$prefix in the European Union?"),
                 possibleOptions = possibleOptions,
                 correctAnswer = answerSubject
             )
@@ -61,7 +61,7 @@ class EuropeanUnionQuestionFactory(
             val possibleOptions = listOf(trueString, falseString)
 
             return finaliseQuestion(
-                QuestionType(question = "$questionSubject is part of the European Union"),
+                QuestionData(question = "$questionSubject is part of the European Union"),
                 possibleOptions = possibleOptions,
                 correctAnswer = if (isPartOfEuAnswerSubject) trueString else falseString,
                 combineAnswerWithOptions = false,

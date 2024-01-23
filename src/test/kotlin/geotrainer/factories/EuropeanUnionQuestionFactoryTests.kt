@@ -9,7 +9,7 @@ import geotrainer.models.countries.Latvia
 import geotrainer.models.countries.Norway
 import geotrainer.models.countries.Russia
 import geotrainer.models.countries.Sweden
-import geotrainer.models.quiz.QuestionType
+import geotrainer.models.quiz.QuestionData
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.AsyncTest
 import geotrainer.utils.CountryProvider
@@ -75,7 +75,7 @@ class EuropeanUnionQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                QuestionType(question = "Which country is NOT in the European Union?"),
+                QuestionData(question = "Which country is NOT in the European Union?"),
                 options = expectedOptions + norway.name,
                 correctAnswer = norway.name
             ),
@@ -116,7 +116,7 @@ class EuropeanUnionQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                QuestionType(question = "Which country is in the European Union?"),
+                QuestionData(question = "Which country is in the European Union?"),
                 options = expectedOptions + sweden.name,
                 correctAnswer = sweden.name
             ),
@@ -177,7 +177,7 @@ class EuropeanUnionQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                QuestionType(question = "Which country is NOT in the European Union?"),
+                QuestionData(question = "Which country is NOT in the European Union?"),
                 options = expectedOptions + norway.name,
                 correctAnswer = norway.name
             ),
@@ -215,7 +215,7 @@ class EuropeanUnionQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                QuestionType(question = "${norway.name} is part of the European Union"),
+                QuestionData(question = "${norway.name} is part of the European Union"),
                 options = expectedOptions,
                 correctAnswer = "False"
             ),

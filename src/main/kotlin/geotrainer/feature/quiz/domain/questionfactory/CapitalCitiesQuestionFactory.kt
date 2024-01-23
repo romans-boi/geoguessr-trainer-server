@@ -1,7 +1,7 @@
 package geotrainer.feature.quiz.domain.questionfactory
 
 import geotrainer.models.Continent
-import geotrainer.models.quiz.QuestionType
+import geotrainer.models.quiz.QuestionData
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.CountryProvider
 import geotrainer.utils.RandomHelper
@@ -41,7 +41,7 @@ class CapitalCitiesQuestionFactory(
             )
 
             return finaliseQuestion(
-                QuestionType(question = "$questionSubject is the capital of..."),
+                QuestionData(question = "$questionSubject is the capital of..."),
                 possibleOptions,
                 answerSubject
             )
@@ -62,7 +62,7 @@ class CapitalCitiesQuestionFactory(
             )
 
             return finaliseQuestion(
-                QuestionType(question = "What is the capital of $questionSubject?"),
+                QuestionData(question = "What is the capital of $questionSubject?"),
                 possibleOptions,
                 answerSubject
             )

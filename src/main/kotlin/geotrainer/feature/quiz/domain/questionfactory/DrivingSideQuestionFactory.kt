@@ -2,7 +2,7 @@ package geotrainer.feature.quiz.domain.questionfactory
 
 import geotrainer.models.Continent
 import geotrainer.models.DrivingSide
-import geotrainer.models.quiz.QuestionType
+import geotrainer.models.quiz.QuestionData
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.CountryProvider
 import geotrainer.utils.RandomHelper
@@ -38,7 +38,7 @@ class DrivingSideQuestionFactory(
                 .processOptions(answerSubject)
 
             return finaliseQuestion(
-                QuestionType(question = "Which country drives on the ${questionSubject.name.lowercase()}?"),
+                QuestionData(question = "Which country drives on the ${questionSubject.name.lowercase()}?"),
                 possibleOptions = possibleOptions,
                 correctAnswer = answerSubject,
             )
@@ -55,7 +55,7 @@ class DrivingSideQuestionFactory(
             val possibleOptions = DrivingSide.entries.map { it.name }
 
             return finaliseQuestion(
-                QuestionType(question = "What driving side of the road is used in $questionSubject?"),
+                QuestionData(question = "What driving side of the road is used in $questionSubject?"),
                 possibleOptions,
                 answerSubject,
                 combineAnswerWithOptions = false,

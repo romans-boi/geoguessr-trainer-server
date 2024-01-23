@@ -10,7 +10,7 @@ import geotrainer.models.countries.Indonesia
 import geotrainer.models.countries.Malaysia
 import geotrainer.models.countries.Nigeria
 import geotrainer.models.countries.SouthAfrica
-import geotrainer.models.quiz.QuestionType
+import geotrainer.models.quiz.QuestionData
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.AsyncTest
 import geotrainer.utils.CountryProvider
@@ -74,7 +74,7 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                QuestionType(question = "$capitalCity is the capital of..."),
+                QuestionData(question = "$capitalCity is the capital of..."),
                 options = options + southAfrica.name,
                 correctAnswer = southAfrica.name
             ),
@@ -204,7 +204,7 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                QuestionType(question = "$capitalCity is the capital of..."),
+                QuestionData(question = "$capitalCity is the capital of..."),
                 options = listOf("Nigeria", "South Africa"),
                 correctAnswer = southAfrica.name
             ),
@@ -254,7 +254,7 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                QuestionType(question = "What is the capital of ${indonesia.name}?"),
+                QuestionData(question = "What is the capital of ${indonesia.name}?"),
                 options = options + answer,
                 correctAnswer = answer
             ),
@@ -384,7 +384,7 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                QuestionType(question = "What is the capital of ${indonesia.name}?"),
+                QuestionData(question = "What is the capital of ${indonesia.name}?"),
                 options = listOf(malaysia.capitalCities.first(), answer),
                 correctAnswer = answer
             ),

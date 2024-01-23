@@ -5,9 +5,9 @@ import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class QuestionType(
+data class QuestionData(
     val question: String,
     @Contextual
-    val image: Url? = null,
+    val imageUrl: Url? = null,
     val supportingText: String? = null,
 )

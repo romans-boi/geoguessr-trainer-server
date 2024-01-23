@@ -2,7 +2,8 @@ package geotrainer.feature.quiz.domain.questionfactory
 
 import geotrainer.models.Continent
 import geotrainer.models.countries.Country
-import geotrainer.models.quiz.QuestionType
+import geotrainer.models.quiz.OptionData
+import geotrainer.models.quiz.QuestionData
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.CountryProvider
 import geotrainer.utils.RandomHelper
@@ -90,7 +91,7 @@ abstract class QuestionFactory(
      * Returns null if the possible options are null.
      * */
     protected fun finaliseQuestion(
-        question: QuestionType,
+        question: QuestionData,
         possibleOptions: List<String>?,
         correctAnswer: String,
         combineAnswerWithOptions: Boolean = true,
@@ -105,9 +106,11 @@ abstract class QuestionFactory(
         }
 
         QuizQuestion(
-            question = question,
-            options = processedOptions,
-            correctAnswer = correctAnswer
+            questionData = question,
+            OptionData.Text(
+                options = processedOptions,
+                correctAnswer = correctAnswer
+            )
         )
     }
 
