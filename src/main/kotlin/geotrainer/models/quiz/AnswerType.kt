@@ -6,17 +6,6 @@ import kotlinx.serialization.Contextual
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
-//@Serializable
-//sealed class AnswerType {
-//    @Serializable
-//    @SerialName("text")
-//    data class Text(val text: String) : AnswerType()
-//
-//    @Serializable
-//    @SerialName("image")
-//    data class Image(val imageUrl: @Contextual Url) : AnswerType()
-//}
-
 @Serializable
 sealed class OptionData {
     abstract val options: List<Any>

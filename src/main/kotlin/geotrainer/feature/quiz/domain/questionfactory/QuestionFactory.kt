@@ -1,6 +1,7 @@
 package geotrainer.feature.quiz.domain.questionfactory
 
 import geotrainer.models.Continent
+import geotrainer.models.Url
 import geotrainer.models.countries.Country
 import geotrainer.models.quiz.OptionData
 import geotrainer.models.quiz.QuestionData
@@ -89,6 +90,8 @@ abstract class QuestionFactory(
      *  - Shuffling all the combined options (if desired)
      *
      * Returns null if the possible options are null.
+     *
+     * This overload considers String options.
      * */
     protected fun finaliseQuestion(
         question: QuestionData,
@@ -96,18 +99,41 @@ abstract class QuestionFactory(
         correctAnswer: String,
         combineAnswerWithOptions: Boolean = true,
         shuffleOptions: Boolean = true,
-    ): QuizQuestion? = possibleOptions?.let { options ->
-        val processedOptions = if (combineAnswerWithOptions) {
-            options + correctAnswer
-        } else {
-            options
-        }.let {
-            if (shuffleOptions) randomHelper.shuffle(it) else it
-        }
+    ): QuizQuestion? {
+        val processedOptions = processOptions(possibleOptions, correctAnswer, combineAnswerWithOptions, shuffleOptions)
+            ?: return null
 
-        QuizQuestion(
+        return QuizQuestion(
             questionData = question,
             OptionData.Text(
+                options = processedOptions,
+                correctAnswer = correctAnswer
+            )
+        )
+    }
+
+    /**
+     * Finalises a question into a format that can be returned. This processing includes:
+     *  - Adding the answer to the options (if desired)
+     *  - Shuffling all the combined options (if desired)
+     *
+     * Returns null if the possible options are null.
+     *
+     * This overload considers Url (i.e. Image) options.
+     * */
+    protected fun finaliseQuestion(
+        question: QuestionData,
+        possibleOptions: List<Url>?,
+        correctAnswer: Url,
+        combineAnswerWithOptions: Boolean = true,
+        shuffleOptions: Boolean = true,
+    ): QuizQuestion? {
+        val processedOptions = processOptions(possibleOptions, correctAnswer, combineAnswerWithOptions, shuffleOptions)
+            ?: return null
+
+        return QuizQuestion(
+            questionData = question,
+            OptionData.Image(
                 options = processedOptions,
                 correctAnswer = correctAnswer
             )
@@ -135,6 +161,21 @@ abstract class QuestionFactory(
 
         if (allRemainingRelevantQuestionCountries.isEmpty()) {
             allRemainingRelevantQuestionCountries += allRelevantQuestionCountries
+        }
+    }
+
+    private fun <T> processOptions(
+        possibleOptions: List<T>?,
+        correctAnswer: T,
+        combineAnswerWithOptions: Boolean,
+        shuffleOptions: Boolean,
+    ): List<T>? = possibleOptions?.let { options ->
+        if (combineAnswerWithOptions) {
+            options + correctAnswer
+        } else {
+            options
+        }.let {
+            if (shuffleOptions) randomHelper.shuffle(it) else it
         }
     }
 }

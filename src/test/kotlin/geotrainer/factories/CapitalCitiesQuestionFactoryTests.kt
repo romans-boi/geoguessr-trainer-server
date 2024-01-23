@@ -10,6 +10,7 @@ import geotrainer.models.countries.Indonesia
 import geotrainer.models.countries.Malaysia
 import geotrainer.models.countries.Nigeria
 import geotrainer.models.countries.SouthAfrica
+import geotrainer.models.quiz.OptionData
 import geotrainer.models.quiz.QuestionData
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.AsyncTest
@@ -21,7 +22,7 @@ import org.junit.Test
 
 import kotlin.test.assertEquals
 
-class CapitalCitiesQuestionFactoryTests: AsyncTest() {
+class CapitalCitiesQuestionFactoryTests : AsyncTest() {
     private val numOfOptions = 4
     private val randomHelper: RandomHelper = mockk<RandomHelper>()
     private val countryProvider: CountryProvider = mockk<CountryProvider>()
@@ -65,8 +66,8 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
         val options = countriesForOptions.take(3)
 
         every { randomHelper.randomOrNull(any<List<QuestionVariant>>()) } returns sut.questionVariants[0]
-        every { randomHelper.randomOrNull(allRelevantQuestionCountries)} returns southAfrica
-        every { randomHelper.randomOrNull(southAfrica.capitalCities)} returns capitalCity
+        every { randomHelper.randomOrNull(allRelevantQuestionCountries) } returns southAfrica
+        every { randomHelper.randomOrNull(southAfrica.capitalCities) } returns capitalCity
 
         /* Run test */
         val question = sut.getQuestion()
@@ -75,8 +76,10 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
         assertEquals(
             QuizQuestion(
                 QuestionData(question = "$capitalCity is the capital of..."),
-                options = options + southAfrica.name,
-                correctAnswer = southAfrica.name
+                OptionData.Text(
+                    options = options + southAfrica.name,
+                    correctAnswer = southAfrica.name
+                )
             ),
             question
         )
@@ -99,7 +102,7 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
 
         // Testing edge case (that shouldn't happen) where remaining countries are empty
         every { randomHelper.randomOrNull(any<List<QuestionVariant>>()) } returns sut.questionVariants[0]
-        every { randomHelper.randomOrNull(allRelevantQuestionCountries)} returns null
+        every { randomHelper.randomOrNull(allRelevantQuestionCountries) } returns null
 
         /* Run test */
         val question = sut.getQuestion()
@@ -129,8 +132,8 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
 
         // Testing edge case (that shouldn't happen) where capital cities are empty
         every { randomHelper.randomOrNull(any<List<QuestionVariant>>()) } returns sut.questionVariants[0]
-        every { randomHelper.randomOrNull(allRelevantQuestionCountries)} returns southAfrica
-        every { randomHelper.randomOrNull(southAfrica.capitalCities)} returns capitalCity
+        every { randomHelper.randomOrNull(allRelevantQuestionCountries) } returns southAfrica
+        every { randomHelper.randomOrNull(southAfrica.capitalCities) } returns capitalCity
 
         /* Run test */
         val question = sut.getQuestion()
@@ -159,8 +162,8 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
         }
 
         every { randomHelper.randomOrNull(any<List<QuestionVariant>>()) } returns sut.questionVariants[0]
-        every { randomHelper.randomOrNull(allRelevantQuestionCountries)} returns southAfrica
-        every { randomHelper.randomOrNull(southAfrica.capitalCities)} returns capitalCity
+        every { randomHelper.randomOrNull(allRelevantQuestionCountries) } returns southAfrica
+        every { randomHelper.randomOrNull(southAfrica.capitalCities) } returns capitalCity
 
         /* Run test */
         val question = sut.getQuestion()
@@ -195,8 +198,8 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
         }
 
         every { randomHelper.randomOrNull(any<List<QuestionVariant>>()) } returns sut.questionVariants[0]
-        every { randomHelper.randomOrNull(allRelevantQuestionCountries)} returns southAfrica
-        every { randomHelper.randomOrNull(southAfrica.capitalCities)} returns capitalCity
+        every { randomHelper.randomOrNull(allRelevantQuestionCountries) } returns southAfrica
+        every { randomHelper.randomOrNull(southAfrica.capitalCities) } returns capitalCity
 
         /* Run test */
         val question = sut.getQuestion()
@@ -205,8 +208,10 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
         assertEquals(
             QuizQuestion(
                 QuestionData(question = "$capitalCity is the capital of..."),
-                options = listOf("Nigeria", "South Africa"),
-                correctAnswer = southAfrica.name
+                OptionData.Text(
+                    options = listOf("Nigeria", "South Africa"),
+                    correctAnswer = southAfrica.name
+                )
             ),
             question
         )
@@ -244,8 +249,8 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
         val options = countriesForOptions.take(3)
 
         every { randomHelper.randomOrNull(sut.questionVariants) } returns sut.questionVariants[1]
-        every { randomHelper.randomOrNull(allRelevantQuestionCountries)} returns indonesia
-        every { randomHelper.randomOrNull(indonesia.capitalCities)} returns answer
+        every { randomHelper.randomOrNull(allRelevantQuestionCountries) } returns indonesia
+        every { randomHelper.randomOrNull(indonesia.capitalCities) } returns answer
         every { randomHelper.randomOrNull(malaysia.capitalCities) } returns malaysia.capitalCities.first()
 
         /* Run test */
@@ -255,8 +260,10 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
         assertEquals(
             QuizQuestion(
                 QuestionData(question = "What is the capital of ${indonesia.name}?"),
-                options = options + answer,
-                correctAnswer = answer
+                OptionData.Text(
+                    options = options + answer,
+                    correctAnswer = answer
+                )
             ),
             question
         )
@@ -278,7 +285,7 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
         }
 
         every { randomHelper.randomOrNull(sut.questionVariants) } returns sut.questionVariants[1]
-        every { randomHelper.randomOrNull(allRelevantQuestionCountries)} returns null
+        every { randomHelper.randomOrNull(allRelevantQuestionCountries) } returns null
 
         /* Run test */
         val question = sut.getQuestion()
@@ -304,8 +311,8 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
         }
 
         every { randomHelper.randomOrNull(sut.questionVariants) } returns sut.questionVariants[1]
-        every { randomHelper.randomOrNull(allRelevantQuestionCountries)} returns indonesia
-        every { randomHelper.randomOrNull(indonesia.capitalCities)} returns null
+        every { randomHelper.randomOrNull(allRelevantQuestionCountries) } returns indonesia
+        every { randomHelper.randomOrNull(indonesia.capitalCities) } returns null
 
         /* Run test */
         val question = sut.getQuestion()
@@ -339,7 +346,7 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
         val answer = indonesia.capitalCities.first()
 
         every { randomHelper.randomOrNull(sut.questionVariants) } returns sut.questionVariants[1]
-        every { randomHelper.randomOrNull(allRelevantQuestionCountries)} returns indonesia
+        every { randomHelper.randomOrNull(allRelevantQuestionCountries) } returns indonesia
         every { randomHelper.randomOrNull(indonesia.capitalCities) } returns answer
 
         /* Run test */
@@ -374,7 +381,7 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
         val answer = indonesia.capitalCities.first()
 
         every { randomHelper.randomOrNull(sut.questionVariants) } returns sut.questionVariants[1]
-        every { randomHelper.randomOrNull(allRelevantQuestionCountries)} returns indonesia
+        every { randomHelper.randomOrNull(allRelevantQuestionCountries) } returns indonesia
         every { randomHelper.randomOrNull(indonesia.capitalCities) } returns answer
         every { randomHelper.randomOrNull(malaysia.capitalCities) } returns malaysia.capitalCities.first()
 
@@ -385,8 +392,10 @@ class CapitalCitiesQuestionFactoryTests: AsyncTest() {
         assertEquals(
             QuizQuestion(
                 QuestionData(question = "What is the capital of ${indonesia.name}?"),
-                options = listOf(malaysia.capitalCities.first(), answer),
-                correctAnswer = answer
+                OptionData.Text(
+                    options = listOf(malaysia.capitalCities.first(), answer),
+                    correctAnswer = answer
+                )
             ),
             question
         )
