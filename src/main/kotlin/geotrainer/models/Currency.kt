@@ -156,11 +156,6 @@ enum class Currency(val displayName: String, val symbol: String) {
         symbol = "ден"
     ),
 
-    Balboa(
-        displayName = "Balboa",
-        symbol = "B/."
-    ),
-
     Sol(
         displayName = "Sol",
         symbol = "S/"
@@ -291,9 +286,5 @@ enum class Currency(val displayName: String, val symbol: String) {
         symbol = "د.ت, DT"
     ),
 
-    Dong(
-        displayName = "Đồng",
-        symbol = "₫, đ"
-    ),
     ;
 }

@@ -28,7 +28,7 @@ class DomainNameQuestionFactory(
         override fun getQuestion(): QuizQuestion? {
             val country = chooseSimpleCountry() ?: return null
 
-            val questionSubject = country.domain.id
+            val questionSubject = country.domain.value
             val answerSubject = country.name
 
             val possibleOptions = (allRelevantQuestionCountries - country).map { it.name }
@@ -81,7 +81,7 @@ class DomainNameQuestionFactory(
             val country = chooseSimpleCountry() ?: return null
 
             val questionSubject = country.name
-            val answerSubject = country.domain.id
+            val answerSubject = country.domain.value
 
             val questionSubjectLettersOnly = questionSubject.filter { it.isLetter() }
 
@@ -117,14 +117,14 @@ class DomainNameQuestionFactory(
             // If yes, then use any available domain names in the Domain class
             val additionalOptions = if (numOfOptionsLeftToAdd > 0) {
                 randomHelper.shuffle(
-                    (Domain.entries.map { it.id } - similarOptions.toSet() - answerSubject)
+                    (Domain.entries.map { it.value } - similarOptions.toSet() - answerSubject)
                 ).distinct().take(numOfOptionsLeftToAdd)
             } else {
                 emptyList()
             }
 
             val allOptions = (similarOptions + additionalOptions).filter {
-                it != country.domain.id
+                it != country.domain.value
             }.distinct()
 
             if (allOptions.isEmpty()) {

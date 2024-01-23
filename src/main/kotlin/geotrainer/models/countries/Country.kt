@@ -1,13 +1,12 @@
 package geotrainer.models.countries
 
-import geotrainer.feature.quiz.domain.QuizGeneratorImpl
-import geotrainer.feature.quiz.domain.questionfactory.QuestionFactoryProviderImpl
+import geotrainer.models.CameraGeneration
 import geotrainer.models.Continent
 import geotrainer.models.Currency
 import geotrainer.models.Domain
 import geotrainer.models.DrivingSide
-import geotrainer.utils.CountryProvider
-import geotrainer.utils.RandomHelperImpl
+import geotrainer.models.PhoneDialingCode
+import geotrainer.models.RoadLines
 
 sealed interface Country {
     val name: String
@@ -16,14 +15,19 @@ sealed interface Country {
     val drivingSide: DrivingSide
     val currency: Currency
     val domain: Domain
+    val phoneDialingCodes: List<PhoneDialingCode>?
 
     val majorCities: List<String>
 
     // TODO change this to URL
-    val carPlates: List<String>
+    val carPlates: List<String>?
 
     // TODO change this to URL
     val bollards: List<String>?
+
+    val cameraGenerations: List<CameraGeneration>
+
+    val roadLines: List<RoadLines>?
 
     sealed class AfricanCountry : Country {
         final override val continent: Continent = Continent.Africa
@@ -75,7 +79,6 @@ sealed interface Country {
                 Thailand(),
                 Turkey(),
                 UnitedArabEmirates(),
-                Vietnam()
             )
         }
     }
@@ -85,7 +88,6 @@ sealed interface Country {
 
         companion object {
             fun getAllNorthAmericanCountries(): List<NorthAmericanCountry> = listOf(
-                Panama(),
                 Bermuda(),
                 Canada(),
                 DominicanRepublic(),
@@ -185,17 +187,21 @@ sealed interface Country {
 }
 
 fun main() {
-    val quizGen = QuizGeneratorImpl(
-        questionFactoryProvider = QuestionFactoryProviderImpl(
-            randomHelper = RandomHelperImpl(),
-            countryProvider = CountryProvider { Country.allCountries }
-        )
-    )
+    //    val quizGen = QuizGeneratorImpl(
+    //        questionFactoryProvider = QuestionFactoryProviderImpl(
+    //            randomHelper = RandomHelperImpl(),
+    //            countryProvider = CountryProvider { Country.allCountries }
+    //        )
+    //    )
+    //
+    //    quizGen.generateDomainNamesQuiz(Continent.Europe, 50, 4).map {
+    //        println("========= Question ========")
+    //        println("${it.question}")
+    //        println("Options: ${it.options}")
+    //        println("Answer: ${it.correctAnswer}")
+    //    }
 
-    quizGen.generateDomainNamesQuiz(Continent.Europe, 50, 4).map {
-        println("========= Question ========")
-        println("${it.question}")
-        println("Options: ${it.options}")
-        println("Answer: ${it.correctAnswer}")
+    Country.allCountries.map {
+        println(it.name + ": ")
     }
 }

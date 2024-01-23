@@ -87,7 +87,7 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What country uses the domain '${sweden.domain.id}'?",
+                question = "What country uses the domain '${sweden.domain.value}'?",
                 options = expectedOptions + sweden.name,
                 correctAnswer = sweden.name
             ),
@@ -170,7 +170,7 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What country uses the domain '${sweden.domain.id}'?",
+                question = "What country uses the domain '${sweden.domain.value}'?",
                 options = expectedOptions + sweden.name,
                 correctAnswer = sweden.name
             ),
@@ -225,7 +225,7 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What country uses the domain '${sweden.domain.id}'?",
+                question = "What country uses the domain '${sweden.domain.value}'?",
                 options = expectedOptions + sweden.name,
                 correctAnswer = sweden.name
             ),
@@ -300,7 +300,7 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What country uses the domain '${sweden.domain.id}'?",
+                question = "What country uses the domain '${sweden.domain.value}'?",
                 options = expectedOptions + sweden.name,
                 correctAnswer = sweden.name
             ),
@@ -358,8 +358,8 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         assertEquals(
             QuizQuestion(
                 question = "What domain is used in ${croatia.name}?",
-                options = possibleOptions + croatia.domain.id,
-                correctAnswer = croatia.domain.id
+                options = possibleOptions + croatia.domain.value,
+                correctAnswer = croatia.domain.value
             ),
             question
         )
@@ -431,7 +431,7 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         every { randomHelper.randomOrNull(possibleOptionVariant3) } returns ".hu"
 
         val possibleOptions = listOf(".cc", ".hu")
-        val possibleOtherOptions = (Domain.entries.map { it.id } - ".cc" - ".hu" - croatia.domain.id)
+        val possibleOtherOptions = (Domain.entries.map { it.value } - ".cc" - ".hu" - croatia.domain.value)
 
         /* Run test */
         val question = sut.getQuestion()
@@ -440,8 +440,8 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         assertEquals(
             QuizQuestion(
                 question = "What domain is used in ${croatia.name}?",
-                options = possibleOptions + possibleOtherOptions[0] + croatia.domain.id,
-                correctAnswer = croatia.domain.id
+                options = possibleOptions + possibleOtherOptions[0] + croatia.domain.value,
+                correctAnswer = croatia.domain.value
             ),
             question
         )
@@ -487,7 +487,7 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         every { randomHelper.randomOrNull(possibleOptionVariant3) } returns ".hu"
 
         val possibleOptions = listOf(".cc", ".hu")
-        val possibleOtherOptions = (Domain.entries.map { it.id } - ".cc" - ".hu" - croatia.domain.id)
+        val possibleOtherOptions = (Domain.entries.map { it.value } - ".cc" - ".hu" - croatia.domain.value)
 
         // Override the shuffle to return options that already exist (whilst technically not possible, this is just
         // testing that the returned list is filtered out)
@@ -500,8 +500,8 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         assertEquals(
             QuizQuestion(
                 question = "What domain is used in ${croatia.name}?",
-                options = possibleOptions + croatia.domain.id,
-                correctAnswer = croatia.domain.id
+                options = possibleOptions + croatia.domain.value,
+                correctAnswer = croatia.domain.value
             ),
             question
         )
@@ -545,7 +545,7 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         every { randomHelper.randomOrNull(possibleOptionVariant2) } returns ".se"
 
         val possibleOptions: List<String> = listOf()
-        val possibleOtherOptions = (Domain.entries.map { it.id } - sweden.domain.id)
+        val possibleOtherOptions = (Domain.entries.map { it.value } - sweden.domain.value)
 
         // Override the shuffle to return options that already exist (whilst technically not possible, this is just
         // testing that the returned list is filtered out)
