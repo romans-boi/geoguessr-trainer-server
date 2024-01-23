@@ -2,6 +2,7 @@ package geotrainer.feature.quiz.domain.questionfactory
 
 import geotrainer.models.Continent
 import geotrainer.models.Domain
+import geotrainer.models.quiz.QuestionType
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.CountryProvider
 import geotrainer.utils.RandomHelper
@@ -69,7 +70,7 @@ class DomainNameQuestionFactory(
             }
 
             return finaliseQuestion(
-                question = "What country uses the domain '$questionSubject'?",
+                QuestionType(question = "What country uses the domain '$questionSubject'?"),
                 possibleOptions = allOptions,
                 correctAnswer = answerSubject
             )
@@ -132,7 +133,7 @@ class DomainNameQuestionFactory(
             }
 
             return finaliseQuestion(
-                question = "What domain is used in $questionSubject?",
+                QuestionType(question = "What domain is used in $questionSubject?"),
                 possibleOptions = allOptions,
                 correctAnswer = answerSubject
             )

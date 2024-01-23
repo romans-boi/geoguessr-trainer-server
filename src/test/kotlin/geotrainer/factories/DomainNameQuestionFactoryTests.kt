@@ -13,6 +13,7 @@ import geotrainer.models.countries.Netherlands
 import geotrainer.models.countries.Serbia
 import geotrainer.models.countries.Slovenia
 import geotrainer.models.countries.Sweden
+import geotrainer.models.quiz.QuestionType
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.AsyncTest
 import geotrainer.utils.CountryProvider
@@ -87,7 +88,7 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What country uses the domain '${sweden.domain.value}'?",
+                QuestionType(question = "What country uses the domain '${sweden.domain.value}'?"),
                 options = expectedOptions + sweden.name,
                 correctAnswer = sweden.name
             ),
@@ -170,7 +171,7 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What country uses the domain '${sweden.domain.value}'?",
+                QuestionType(question = "What country uses the domain '${sweden.domain.value}'?"),
                 options = expectedOptions + sweden.name,
                 correctAnswer = sweden.name
             ),
@@ -225,7 +226,7 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What country uses the domain '${sweden.domain.value}'?",
+                QuestionType(question = "What country uses the domain '${sweden.domain.value}'?"),
                 options = expectedOptions + sweden.name,
                 correctAnswer = sweden.name
             ),
@@ -300,7 +301,7 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What country uses the domain '${sweden.domain.value}'?",
+                QuestionType(question = "What country uses the domain '${sweden.domain.value}'?"),
                 options = expectedOptions + sweden.name,
                 correctAnswer = sweden.name
             ),
@@ -357,7 +358,7 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What domain is used in ${croatia.name}?",
+                QuestionType(question = "What domain is used in ${croatia.name}?"),
                 options = possibleOptions + croatia.domain.value,
                 correctAnswer = croatia.domain.value
             ),
@@ -439,7 +440,7 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What domain is used in ${croatia.name}?",
+                QuestionType(question = "What domain is used in ${croatia.name}?"),
                 options = possibleOptions + possibleOtherOptions[0] + croatia.domain.value,
                 correctAnswer = croatia.domain.value
             ),
@@ -499,7 +500,7 @@ class DomainNameQuestionFactoryTests: AsyncTest() {
         /* Verify */
         assertEquals(
             QuizQuestion(
-                question = "What domain is used in ${croatia.name}?",
+                QuestionType(question = "What domain is used in ${croatia.name}?"),
                 options = possibleOptions + croatia.domain.value,
                 correctAnswer = croatia.domain.value
             ),
