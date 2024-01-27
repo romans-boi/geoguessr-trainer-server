@@ -1,5 +1,6 @@
 package geotrainer.factories
 
+import geotrainer.dataprovider.CountryProvider
 import geotrainer.feature.quiz.domain.questionfactory.CapitalCitiesQuestionFactory
 import geotrainer.feature.quiz.domain.questionfactory.QuestionVariant
 import geotrainer.models.Continent
@@ -14,7 +15,6 @@ import geotrainer.models.quiz.OptionData
 import geotrainer.models.quiz.QuestionData
 import geotrainer.models.quiz.QuizQuestion
 import geotrainer.utils.AsyncTest
-import geotrainer.utils.CountryProvider
 import geotrainer.utils.RandomHelper
 import io.mockk.every
 import io.mockk.mockk

@@ -13,7 +13,7 @@ fun Route.allQuizzesRouting() {
         val allQuizzesRepository by inject<AllQuizzesRepository>()
 
         get {
-            val allQuizzes = allQuizzesRepository.getAllQuizzes()
+            val allQuizzes = allQuizzesRepository.getAllQuizSections()
 
             call.respond(allQuizzes)
         }

@@ -1,7 +1,7 @@
 package geotrainer.feature.quiz.domain.questionfactory
 
+import geotrainer.dataprovider.CountryProvider
 import geotrainer.models.Continent
-import geotrainer.utils.CountryProvider
 import geotrainer.utils.RandomHelper
 
 interface QuestionFactoryProvider {

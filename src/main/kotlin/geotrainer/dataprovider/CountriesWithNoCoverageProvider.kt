@@ -1,8 +1,12 @@
-package geotrainer.utils
+package geotrainer.dataprovider
 
 interface CountriesWithNoCoverageProvider {
     // Not an exhaustive list of countries with no coverage, but enough to give good options in quizzes
-    fun getCountriesWithNoCoverage() = listOf(
+    fun getCountriesWithNoCoverage(): List<String>
+}
+
+class CountriesWithNoCoverageProviderImpl : CountriesWithNoCoverageProvider {
+    override fun getCountriesWithNoCoverage() = listOf(
         "Honduras",
         "Belize",
         "Nicaragua",
