@@ -1,9 +1,9 @@
 package geotrainer.feature.quiz.domain.questionfactory
 
+import geotrainer.dataprovider.CountryProvider
 import geotrainer.models.countries.Country
 import geotrainer.models.quiz.QuestionData
 import geotrainer.models.quiz.QuizQuestion
-import geotrainer.utils.CountryProvider
 import geotrainer.utils.RandomHelper
 
 class EuropeanUnionQuestionFactory(

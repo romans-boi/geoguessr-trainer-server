@@ -1,9 +1,9 @@
 package geotrainer.feature.quiz.domain.questionfactory
 
+import geotrainer.dataprovider.CountryProvider
 import geotrainer.models.Continent
 import geotrainer.models.quiz.QuestionData
 import geotrainer.models.quiz.QuizQuestion
-import geotrainer.utils.CountryProvider
 import geotrainer.utils.RandomHelper
 
 class CapitalCitiesQuestionFactory(

@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Quizzes(
-    val generic: List<QuizType>,
+    val generic: List<Quiz>,
     val continental: List<QuizSection>,
-    val other: List<QuizType>,
+    val other: List<Quiz>,
 )

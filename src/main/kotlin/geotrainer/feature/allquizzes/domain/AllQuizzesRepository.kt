@@ -1,65 +1,30 @@
 package geotrainer.feature.allquizzes.domain
 
-import geotrainer.models.Continent
-import geotrainer.models.quiz.QuizSection
-import geotrainer.models.quiz.QuizType
+import geotrainer.dataprovider.quiz.AllQuizzesProvider
+import geotrainer.dataprovider.quiz.quizid.ContinentQuizIdsProvider
+import geotrainer.models.quiz.QuizWithContinent
 
 interface AllQuizzesRepository {
-    fun getAllQuizzes(): List<QuizSection>
+    fun getAllQuizSections(): List<QuizWithContinent>
 }
 
-class AllQuizzesRepositoryImpl : AllQuizzesRepository {
-    override fun getAllQuizzes(): List<QuizSection> = getGenericSectionedQuizzes() + Continent.entries.flatMap {
-        it.getContinentSectionedQuizzes()
-    }
+class AllQuizzesRepositoryImpl(
+    allQuizzesProvider: AllQuizzesProvider,
+    private val quizIdsProviders: Set<ContinentQuizIdsProvider>
+) : AllQuizzesRepository {
+    private val allQuizzes = allQuizzesProvider.getAllQuizzes()
 
-    private fun getGenericSectionedQuizzes(): List<QuizSection> = setOf(
-        QuizType.Everything,
-        QuizType.CountryInContinent,
-        QuizType.CapitalCities,
-        QuizType.DomainNames,
-        QuizType.DrivingSide
-    ).map { quiz -> QuizSection(quiz, continent = null) }
+    override fun getAllQuizSections(): List<QuizWithContinent> = quizIdsProviders.flatMap { provider ->
+        val quizIds = provider.getAllQuizIds()
 
-    private fun Continent.getContinentSectionedQuizzes(): List<QuizSection> = when(this) {
-        Continent.Africa -> setOf(
-            QuizType.CapitalCities,
-            QuizType.DomainNames,
-            QuizType.DrivingSide,
-        ).map { quiz -> QuizSection(quiz, continent = this) }
-
-        Continent.Asia -> setOf(
-            QuizType.CapitalCities,
-            QuizType.DomainNames,
-            QuizType.DrivingSide,
-
-            QuizType.JapanesePrefecturesKanji
-        ).map { quiz -> QuizSection(quiz, continent = this) }
-
-        Continent.NorthAmerica -> setOf(
-            QuizType.CapitalCities,
-            QuizType.DomainNames,
-            QuizType.DrivingSide,
-        ).map { quiz -> QuizSection(quiz, continent = this) }
-
-        Continent.Oceania -> setOf(
-            QuizType.CapitalCities,
-            QuizType.DomainNames,
-            QuizType.DrivingSide,
-        ).map { quiz -> QuizSection(quiz, continent = this) }
-
-        Continent.SouthAmerica -> setOf(
-            QuizType.CapitalCities,
-            QuizType.DomainNames,
-            QuizType.DrivingSide,
-        ).map { quiz -> QuizSection(quiz, continent = this) }
-
-        Continent.Europe -> setOf(
-            QuizType.CapitalCities,
-            QuizType.DomainNames,
-            QuizType.DrivingSide,
-
-            QuizType.EuropeanUnionCountries
-        ).map { quiz -> QuizSection(quiz, continent = this) }
+        val quizzes = allQuizzes.filter { quiz -> quiz.quizId in quizIds }
+        quizzes.map { quiz ->
+            QuizWithContinent(
+                quizId = quiz.quizId,
+                title = quiz.title,
+                description = quiz.description,
+                continent = provider.continent
+            )
+        }
     }
 }

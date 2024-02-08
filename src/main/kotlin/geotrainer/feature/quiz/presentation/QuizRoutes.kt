@@ -2,7 +2,7 @@ package geotrainer.feature.quiz.presentation
 
 import geotrainer.feature.quiz.domain.QuizRepository
 import geotrainer.models.Continent
-import geotrainer.models.quiz.QuizType
+import geotrainer.models.quiz.QuizId
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.ApplicationCall
 import io.ktor.server.application.call
@@ -15,7 +15,7 @@ import io.ktor.util.pipeline.PipelineContext
 import org.koin.ktor.ext.inject
 
 fun Route.quizRouting() {
-    val quizTypeParam = "quizType"
+    val quizIdParam = "quizId"
     val continentParam = "continent"
     val numOfQuestionsParam = "numOfQuestions"
     val numOfOptionsParam = "numOfOptions"
@@ -24,8 +24,8 @@ fun Route.quizRouting() {
         val quizRepository by inject<QuizRepository>()
 
         get {
-            val quizType = call.request.queryParameters[quizTypeParam]
-                ?: return@get getMissingError(quizTypeParam)
+            val quizId = call.request.queryParameters[quizIdParam]
+                ?: return@get getMissingError(quizIdParam)
 
             val continent = call.request.queryParameters[continentParam]
 
@@ -36,7 +36,7 @@ fun Route.quizRouting() {
                 ?: return@get getMissingError(numOfOptionsParam)
 
             val quizQuestions = quizRepository.generateQuiz(
-                quizType = QuizType.valueOfOrNull(quizType) ?: return@get getInvalidError(quizTypeParam),
+                quizId = QuizId.valueOfOrNull(quizId) ?: return@get getInvalidError(quizId),
                 continent = Continent.valueOfOrNull(continent),
 
                 numOfQuestions = numOfQuestions.toIntOrNull().let { num ->

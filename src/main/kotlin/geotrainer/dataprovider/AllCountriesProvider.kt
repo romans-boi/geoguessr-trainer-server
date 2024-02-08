@@ -1,4 +1,4 @@
-package geotrainer.utils
+package geotrainer.dataprovider
 
 import geotrainer.models.countries.Country
 
