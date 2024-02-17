@@ -1,6 +1,13 @@
 package geotrainer.models.countries
 
-import geotrainer.models.*
+import geotrainer.models.CameraGeneration
+import geotrainer.models.City
+import geotrainer.models.Currency
+import geotrainer.models.Domain
+import geotrainer.models.DrivingSide
+import geotrainer.models.PhoneDialingCode
+import geotrainer.models.RoadLines
+
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -31,4 +38,4 @@ data class Albania(
         RoadLines.WhiteSideYellowMiddle
     ),
 
-    ) : Country.EuropeanCountry()
+) : Country.EuropeanCountry()

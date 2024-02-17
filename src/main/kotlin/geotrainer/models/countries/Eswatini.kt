@@ -1,12 +1,19 @@
 package geotrainer.models.countries
 
-import geotrainer.models.*
+import geotrainer.models.CameraGeneration
+import geotrainer.models.City
+import geotrainer.models.Currency
+import geotrainer.models.Domain
+import geotrainer.models.DrivingSide
+import geotrainer.models.PhoneDialingCode
+import geotrainer.models.RoadLines
+
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class Eswatini(
     override val name: String = "Eswatini",
-    override val capitalCities: List<City> = listOf(City("Mbabane", "Lobamba")),
+    override val capitalCities: List<City> = listOf(City("Mbabane"), City("Lobamba")),
     override val drivingSide: DrivingSide = DrivingSide.Left,
     override val currency: Currency = Currency.Lilangeli,
     override val domain: Domain = Domain.Eswatini,

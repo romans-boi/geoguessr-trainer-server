@@ -1,6 +1,13 @@
 package geotrainer.models.countries
 
-import geotrainer.models.*
+import geotrainer.models.CameraGeneration
+import geotrainer.models.City
+import geotrainer.models.Currency
+import geotrainer.models.Domain
+import geotrainer.models.DrivingSide
+import geotrainer.models.PhoneDialingCode
+import geotrainer.models.RoadLines
+
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -21,8 +28,7 @@ data class Botswana(
         City("Mosopa"),
         City("Mogoditshane"),
         City("Mochudi")
-    )
-    ,
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Botswana),
