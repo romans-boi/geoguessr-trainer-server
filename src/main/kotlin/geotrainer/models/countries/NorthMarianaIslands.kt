@@ -17,7 +17,7 @@ data class NorthMarianaIslands(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Dollar,
     override val domain: Domain = Domain.NorthMarianaIslands,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City>? = null,
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.NorthMarianaIslands),

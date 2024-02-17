@@ -18,7 +18,7 @@ sealed interface Country {
     val domain: Domain
     val phoneDialingCodes: List<PhoneDialingCode>?
 
-    val majorCities: List<City>
+    val majorCities: List<City>?
 
     // TODO change this to URL
     val carPlates: List<String>?
