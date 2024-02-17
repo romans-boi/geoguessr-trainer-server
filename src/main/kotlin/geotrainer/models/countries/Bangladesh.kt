@@ -10,7 +10,18 @@ data class Bangladesh(
     override val drivingSide: DrivingSide = DrivingSide.Left,
     override val currency: Currency = Currency.Taka,
     override val domain: Domain = Domain.Bangladesh,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Khulna"),
+        City("Bogura"),
+        City("Mymensingh"),
+        City("Cumilla"),
+        City("Chattogram"),
+        City("Rajshahi"),
+        City("Sylhet"),
+        City("Dinajpur"),
+        City("Barishal"),
+        City("Narayanganj"),
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Bangladesh),
@@ -25,4 +36,4 @@ data class Bangladesh(
         RoadLines.WhiteSideWhiteMiddle,
     ),
 
-) : Country.AsianCountry()
+    ) : Country.AsianCountry()

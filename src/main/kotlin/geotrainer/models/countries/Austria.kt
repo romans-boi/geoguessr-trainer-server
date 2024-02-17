@@ -11,7 +11,18 @@ data class Austria(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Euro,
     override val domain: Domain = Domain.Austria,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Linz"),
+        City("Salzburg"),
+        City("Innsbruck"),
+        City("Graz"),
+        City("Wels"),
+        City("Klagenfurt"),
+        City("Villach"),
+        City("Wiener Neustadt"),
+        City("Sankt Pölten"),
+        City("Dornbirn"),
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Austria),
@@ -27,4 +38,4 @@ data class Austria(
         RoadLines.WhiteSideWhiteMiddle,
     ),
 
-) : Country.EuropeanCountry()
+    ) : Country.EuropeanCountry()

@@ -10,7 +10,19 @@ data class Botswana(
     override val drivingSide: DrivingSide = DrivingSide.Left,
     override val currency: Currency = Currency.Pula,
     override val domain: Domain = Domain.Botswana,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Francistown"),
+        City("Molepolole"),
+        City("Serowe"),
+        City("Selibe Phikwe"),
+        City("Maun"),
+        City("Kanye"),
+        City("Mahalapye"),
+        City("Mosopa"),
+        City("Mogoditshane"),
+        City("Mochudi")
+    )
+    ,
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Botswana),

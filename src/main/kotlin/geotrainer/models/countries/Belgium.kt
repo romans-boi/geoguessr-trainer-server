@@ -11,7 +11,21 @@ data class Belgium(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Euro,
     override val domain: Domain = Domain.Belgium,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Ghent"),
+        City("Antwerp"),
+        City("Bruges"),
+        City("Liège"),
+        City("Mons"),
+        City("Kortrijk"),
+        City("Namur"),
+        City("Charleroi"),
+        City("Leuven"),
+        City("Ostend"),
+        City("Ypres"),
+        City("Hasselt"),
+        City("Genk"),
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Belgium),
@@ -27,4 +41,4 @@ data class Belgium(
         RoadLines.WhiteSideWhiteMiddle,
     ),
 
-) : Country.EuropeanCountry()
+    ) : Country.EuropeanCountry()

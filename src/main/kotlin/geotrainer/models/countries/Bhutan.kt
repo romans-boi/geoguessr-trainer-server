@@ -10,7 +10,13 @@ data class Bhutan(
     override val drivingSide: DrivingSide = DrivingSide.Left,
     override val currency: Currency = Currency.Ngultrum,
     override val domain: Domain = Domain.Bhutan,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Phuntsholing"),
+        City("Punakha"),
+        City("Trashigang"),
+        City("Wangdue Phodrang"),
+        City("Paro")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Bhutan),
@@ -23,4 +29,4 @@ data class Bhutan(
         RoadLines.WhiteSideWhiteMiddle,
     ),
 
-) : Country.AsianCountry()
+    ) : Country.AsianCountry()

@@ -10,7 +10,15 @@ data class Bermuda(
     override val drivingSide: DrivingSide = DrivingSide.Left,
     override val currency: Currency = Currency.Dollar,
     override val domain: Domain = Domain.Bermuda,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Mt Pleasant"),
+        City("Flatts Village"),
+        City("North Shore Village"),
+        City("Somerset Village"),
+        City("Hog Bay"),
+        City("St. George's"),
+        City("Tucker's Town"),
+    ),
     override val carPlates: List<String>? = null,
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode>? = null,
@@ -22,4 +30,4 @@ data class Bermuda(
 
     override val roadLines: List<RoadLines>? = null,
 
-) : Country.NorthAmericanCountry()
+    ) : Country.NorthAmericanCountry()
