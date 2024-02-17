@@ -57,14 +57,17 @@ class CapitalCitiesQuestionFactory(
 
             val possibleOptions = chooseSimpleOptions(
                 selectedCountry = country,
-                answer = answerSubject,
-                selector = { randomHelper.randomOrNull(it.capitalCities) }
+                answer = answerSubject.name,
+                selector = { selectorCountry ->
+                    val city = randomHelper.randomOrNull(selectorCountry.capitalCities)
+                    city?.name
+                }
             )
 
             return finaliseQuestion(
                 QuestionData(question = "What is the capital of $questionSubject?"),
                 possibleOptions,
-                answerSubject
+                answerSubject.name
             )
         }
     }

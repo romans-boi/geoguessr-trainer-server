@@ -1,22 +1,39 @@
 package geotrainer.models.countries
 
 import geotrainer.models.CameraGeneration
+import geotrainer.models.City
 import geotrainer.models.Currency
 import geotrainer.models.Domain
 import geotrainer.models.DrivingSide
 import geotrainer.models.PhoneDialingCode
 import geotrainer.models.RoadLines
+
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class Bulgaria(
     override val name: String = "Bulgaria",
-    override val capitalCities: List<String> = listOf("Sofia"),
+    override val capitalCities: List<City> = listOf(City("Sofia")),
     override val isPartOfEuropeanUnion: Boolean = true,
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Lev,
     override val domain: Domain = Domain.Bulgaria,
-    override val majorCities: List<String> = listOf("TODO"),
+    override val majorCities: List<City> = listOf(
+        City("Plovdiv"),
+        City("Varna"),
+        City("Burgas"),
+        City("Ruse"),
+        City("Stara Zagora"),
+        City("Pleven"),
+        City("Sliven"),
+        City("Dobrich"),
+        City("Shumen"),
+        City("Pernik"),
+        City("Haskovo"),
+        City("Yambol"),
+        City("Pazardzhik"),
+        City("Blagoevgrad")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Bulgaria),

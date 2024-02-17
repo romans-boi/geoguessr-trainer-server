@@ -1,6 +1,7 @@
 package geotrainer.models.countries
 
 import geotrainer.models.CameraGeneration
+import geotrainer.models.City
 import geotrainer.models.Continent
 import geotrainer.models.Currency
 import geotrainer.models.Domain
@@ -10,14 +11,14 @@ import geotrainer.models.RoadLines
 
 sealed interface Country {
     val name: String
-    val capitalCities: List<String>?
+    val capitalCities: List<City>?
     val continent: Continent
     val drivingSide: DrivingSide
     val currency: Currency
     val domain: Domain
     val phoneDialingCodes: List<PhoneDialingCode>?
 
-    val majorCities: List<String>
+    val majorCities: List<City>?
 
     // TODO change this to URL
     val carPlates: List<String>?

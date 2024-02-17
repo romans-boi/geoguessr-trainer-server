@@ -1,22 +1,39 @@
 package geotrainer.models.countries
 
 import geotrainer.models.CameraGeneration
+import geotrainer.models.City
 import geotrainer.models.Currency
 import geotrainer.models.Domain
 import geotrainer.models.DrivingSide
 import geotrainer.models.PhoneDialingCode
 import geotrainer.models.RoadLines
+
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class Netherlands(
     override val name: String = "Netherlands",
-    override val capitalCities: List<String> = listOf("Amsterdam"),
+    override val capitalCities: List<City> = listOf(City("Amsterdam")),
     override val isPartOfEuropeanUnion: Boolean = true,
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Euro,
     override val domain: Domain = Domain.Netherlands,
-    override val majorCities: List<String> = listOf("TODO"),
+    override val majorCities: List<City> = listOf(
+        City("Rotterdam"),
+        City("The Hague"),
+        City("Utrecht"),
+        City("Eindhoven"),
+        City("Tilburg"),
+        City("Groningen"),
+        City("Almere"),
+        City("Breda"),
+        City("Nijmegen"),
+        City("Enschede"),
+        City("Haarlem"),
+        City("Arnhem"),
+        City("Zaanstad"),
+        City("Amersfoort")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Netherlands),

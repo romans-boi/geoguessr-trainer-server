@@ -3,6 +3,7 @@ package geotrainer.factories
 import geotrainer.dataprovider.CountryProvider
 import geotrainer.feature.quiz.domain.questionfactory.CapitalCitiesQuestionFactory
 import geotrainer.feature.quiz.domain.questionfactory.QuestionVariant
+import geotrainer.models.City
 import geotrainer.models.Continent
 import geotrainer.models.countries.Australia
 import geotrainer.models.countries.Country
@@ -45,7 +46,7 @@ class CapitalCitiesQuestionFactoryTests : AsyncTest() {
         val continent = Continent.Africa
         val southAfrica = SouthAfrica()
         val nigeria = Nigeria()
-        val capitalCity = "Pretoria (administrative)"
+        val capitalCity = City("Pretoria (administrative)")
 
         val testCountries = listOf(
             southAfrica,
@@ -116,7 +117,7 @@ class CapitalCitiesQuestionFactoryTests : AsyncTest() {
         /* Set up */
         val continent = Continent.Africa
         val southAfrica = SouthAfrica().copy(capitalCities = listOf())
-        val capitalCity = "Pretoria (administrative)"
+        val capitalCity = City("Pretoria (administrative)")
 
         val testCountries: List<Country> = listOf(
             southAfrica
@@ -147,7 +148,7 @@ class CapitalCitiesQuestionFactoryTests : AsyncTest() {
         /* Set up */
         val continent = Continent.Africa
         val southAfrica = SouthAfrica()
-        val capitalCity = "Pretoria (administrative)"
+        val capitalCity = City("Pretoria (administrative)")
 
         val testCountries: List<Country> = listOf(
             southAfrica
@@ -177,7 +178,7 @@ class CapitalCitiesQuestionFactoryTests : AsyncTest() {
         /* Set up */
         val continent = Continent.Africa
         val southAfrica = SouthAfrica()
-        val capitalCity = "Pretoria (administrative)"
+        val capitalCity = City("Pretoria (administrative)")
 
         val testCountries: List<Country> = listOf(
             southAfrica,
@@ -261,8 +262,8 @@ class CapitalCitiesQuestionFactoryTests : AsyncTest() {
             QuizQuestion(
                 QuestionData(question = "What is the capital of ${indonesia.name}?"),
                 OptionData.Text(
-                    options = options + answer,
-                    correctAnswer = answer
+                    options = (options + answer).map { it.name },
+                    correctAnswer = answer.name
                 )
             ),
             question
@@ -393,8 +394,8 @@ class CapitalCitiesQuestionFactoryTests : AsyncTest() {
             QuizQuestion(
                 QuestionData(question = "What is the capital of ${indonesia.name}?"),
                 OptionData.Text(
-                    options = listOf(malaysia.capitalCities.first(), answer),
-                    correctAnswer = answer
+                    options = listOf(malaysia.capitalCities.first().name, answer.name),
+                    correctAnswer = answer.name
                 )
             ),
             question

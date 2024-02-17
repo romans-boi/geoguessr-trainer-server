@@ -1,21 +1,38 @@
 package geotrainer.models.countries
 
 import geotrainer.models.CameraGeneration
+import geotrainer.models.City
 import geotrainer.models.Currency
 import geotrainer.models.Domain
 import geotrainer.models.DrivingSide
 import geotrainer.models.PhoneDialingCode
 import geotrainer.models.RoadLines
+
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class India(
     override val name: String = "India",
-    override val capitalCities: List<String> = listOf("New Delhi"),
+    override val capitalCities: List<City> = listOf(City("New Delhi")),
     override val drivingSide: DrivingSide = DrivingSide.Left,
     override val currency: Currency = Currency.SriLankanRupee,
     override val domain: Domain = Domain.India,
-    override val majorCities: List<String> = listOf("TODO"),
+    override val majorCities: List<City> = listOf(
+        City("Mumbai"),
+        City("Bangalore"),
+        City("Hyderabad"),
+        City("Chennai"),
+        City("Kolkata"),
+        City("Pune"),
+        City("Ahmedabad"),
+        City("Jaipur"),
+        City("Surat"),
+        City("Lucknow"),
+        City("Kanpur"),
+        City("Nagpur"),
+        City("Indore"),
+        City("Thane")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.India),

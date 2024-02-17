@@ -1,22 +1,41 @@
 package geotrainer.models.countries
 
 import geotrainer.models.CameraGeneration
+import geotrainer.models.City
 import geotrainer.models.Currency
 import geotrainer.models.Domain
 import geotrainer.models.DrivingSide
 import geotrainer.models.PhoneDialingCode
 import geotrainer.models.RoadLines
+
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class UnitedKingdom(
     override val name: String = "United Kingdom",
-    override val capitalCities: List<String> = listOf("London"),
+    override val capitalCities: List<City> = listOf(City("London")),
     override val isPartOfEuropeanUnion: Boolean = false,
     override val drivingSide: DrivingSide = DrivingSide.Left,
     override val currency: Currency = Currency.PoundSterling,
     override val domain: Domain = Domain.UnitedKingdom,
-    override val majorCities: List<String> = listOf("TODO"),
+    override val majorCities: List<City> = listOf(
+        City("Birmingham"),
+        City("Manchester"),
+        City("Glasgow"),
+        City("Liverpool"),
+        City("Edinburgh"),
+        City("Bristol"),
+        City("Newcastle upon Tyne"),
+        City("Sheffield"),
+        City("Leeds"),
+        City("Cardiff"),
+        City("Belfast"),
+        City("Nottingham"),
+        City("Southampton"),
+        City("Leicester"),
+        City("Hull"),
+        City("Aberdeen"),
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.UnitedKingdom),

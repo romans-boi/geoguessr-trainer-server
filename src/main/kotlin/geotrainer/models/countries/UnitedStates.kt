@@ -1,21 +1,54 @@
 package geotrainer.models.countries
 
 import geotrainer.models.CameraGeneration
+import geotrainer.models.City
 import geotrainer.models.Currency
 import geotrainer.models.Domain
 import geotrainer.models.DrivingSide
 import geotrainer.models.PhoneDialingCode
 import geotrainer.models.RoadLines
+
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class UnitedStates(
     override val name: String = "United States",
-    override val capitalCities: List<String> = listOf("Washington D.C."),
+    override val capitalCities: List<City> = listOf(City("Washington D.C.")),
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Dollar,
     override val domain: Domain = Domain.UnitedStates,
-    override val majorCities: List<String> = listOf("TODO"),
+    override val majorCities: List<City> = listOf(
+        City("New York"),
+        City("Los Angeles"),
+        City("Chicago"),
+        City("Houston"),
+        City("Phoenix"),
+        City("Philadelphia"),
+        City("San Antonio"),
+        City("San Diego"),
+        City("Dallas"),
+        City("San Jose"),
+        City("Austin"),
+        City("Jacksonville"),
+        City("San Francisco"),
+        City("Columbus"),
+        City("Indianapolis"),
+        City("Fort Worth"),
+        City("Charlotte"),
+        City("Seattle"),
+        City("Denver"),
+        City("Boston"),
+        City("El Paso"),
+        City("Detroit"),
+        City("Nashville"),
+        City("Memphis"),
+        City("Portland"),
+        City("Oklahoma City"),
+        City("Las Vegas"),
+        City("Baltimore"),
+        City("Louisville"),
+        City("Milwaukee")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.UnitedStates),

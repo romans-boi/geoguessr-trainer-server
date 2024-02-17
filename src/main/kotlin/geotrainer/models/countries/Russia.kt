@@ -1,22 +1,34 @@
 package geotrainer.models.countries
 
 import geotrainer.models.CameraGeneration
+import geotrainer.models.City
 import geotrainer.models.Currency
 import geotrainer.models.Domain
 import geotrainer.models.DrivingSide
 import geotrainer.models.PhoneDialingCode
 import geotrainer.models.RoadLines
+
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class Russia(
     override val name: String = "Russia",
-    override val capitalCities: List<String> = listOf("Moscow"),
+    override val capitalCities: List<City> = listOf(City("Moscow")),
     override val isPartOfEuropeanUnion: Boolean = false,
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Ruble,
     override val domain: Domain = Domain.Russia,
-    override val majorCities: List<String> = listOf("TODO"),
+    override val majorCities: List<City> = listOf(
+        City("Saint Petersburg"),
+        City("Novosibirsk"),
+        City("Yekaterinburg"),
+        City("Nizhny Novgorod"),
+        City("Kazan"),
+        City("Chelyabinsk"),
+        City("Omsk"),
+        City("Samara"),
+        City("Rostov-on-Don")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Russia),
