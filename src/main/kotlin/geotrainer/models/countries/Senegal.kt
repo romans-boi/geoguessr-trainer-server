@@ -10,7 +10,17 @@ data class Senegal(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.CfaFranc,
     override val domain: Domain = Domain.Senegal,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Thiès"),
+        City("Kaolack"),
+        City("Ziguinchor"),
+        City("Diourbel"),
+        City("Louga"),
+        City("Touba"),
+        City("Saint-Louis"),
+        City("Rufisque"),
+        City("Fatick")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Senegal),

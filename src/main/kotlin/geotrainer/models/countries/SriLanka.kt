@@ -10,7 +10,17 @@ data class SriLanka(
     override val drivingSide: DrivingSide = DrivingSide.Left,
     override val currency: Currency = Currency.SriLankanRupee,
     override val domain: Domain = Domain.SriLanka,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Dehiwala-Mount Lavinia"),
+        City("Moratuwa"),
+        City("Jaffna"),
+        City("Negombo"),
+        City("Kandy"),
+        City("Kalmunai"),
+        City("Vavuniya"),
+        City("Galle"),
+        City("Trincomalee")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.SriLanka),

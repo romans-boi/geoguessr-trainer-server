@@ -11,7 +11,17 @@ data class Ukraine(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Hryvnia,
     override val domain: Domain = Domain.Ukraine,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Kharkiv"),
+        City("Odessa"),
+        City("Dnipro"),
+        City("Donetsk"),
+        City("Zaporizhzhia"),
+        City("Lviv"),
+        City("Kryvyi Rih"),
+        City("Mykolaiv"),
+        City("Mariupol")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Ukraine),

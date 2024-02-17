@@ -11,7 +11,17 @@ data class Serbia(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.SerbianDinar,
     override val domain: Domain = Domain.Serbia,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Novi Sad"),
+        City("Niš"),
+        City("Kragujevac"),
+        City("Subotica"),
+        City("Zrenjanin"),
+        City("Pancevo"),
+        City("Cacak"),
+        City("Novi Pazar"),
+        City("Kraljevo")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Serbia),

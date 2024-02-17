@@ -10,7 +10,12 @@ data class Uganda(
     override val drivingSide: DrivingSide = DrivingSide.Left,
     override val currency: Currency = Currency.UgandanShilling,
     override val domain: Domain = Domain.Uganda,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Gulu"),
+        City("Lira"),
+        City("Mbarara"),
+        City("Jinja"),
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Uganda),

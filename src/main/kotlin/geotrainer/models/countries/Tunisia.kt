@@ -10,7 +10,12 @@ data class Tunisia(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.TunisianDinar,
     override val domain: Domain = Domain.Tunisia,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Sfax"),
+        City("Sousse"),
+        City("Kairouan"),
+        City("Bizerte")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Tunisia),

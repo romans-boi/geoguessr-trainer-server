@@ -11,7 +11,17 @@ data class Sweden(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Krona,
     override val domain: Domain = Domain.Sweden,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Gothenburg"),
+        City("Malmö"),
+        City("Uppsala"),
+        City("Västerås"),
+        City("Örebro"),
+        City("Linköping"),
+        City("Helsingborg"),
+        City("Jönköping"),
+        City("Norrköping")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Sweden),

@@ -10,7 +10,17 @@ data class Thailand(
     override val drivingSide: DrivingSide = DrivingSide.Left,
     override val currency: Currency = Currency.Baht,
     override val domain: Domain = Domain.Thailand,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Nonthaburi"),
+        City("Chiang Mai"),
+        City("Hat Yai"),
+        City("Udon Thani"),
+        City("Pak Kret"),
+        City("Khon Kaen"),
+        City("Nakhon Ratchasima"),
+        City("Pattaya"),
+        City("Si Racha")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Thailand),

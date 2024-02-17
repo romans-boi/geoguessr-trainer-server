@@ -10,7 +10,12 @@ data class Singapore(
     override val drivingSide: DrivingSide = DrivingSide.Left,
     override val currency: Currency = Currency.Dollar,
     override val domain: Domain = Domain.Singapore,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Jurong West"),
+        City("Woodlands"),
+        City("Tampines"),
+        City("Ang Mo Kio")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Singapore),
