@@ -10,7 +10,22 @@ data class DominicanRepublic(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.DominicanPeso,
     override val domain: Domain = Domain.DominicanRepublic,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Santiago de los Caballeros"),
+        City("Santo Domingo Oeste"),
+        City("Santo Domingo Este"),
+        City("San Pedro de Macorís"),
+        City("La Romana"),
+        City("Bella Vista"),
+        City("San Cristóbal"),
+        City("Puerto Plata"),
+        City("San Francisco de Macorís"),
+        City("Salvaleón de Higüey"),
+        City("Concepción de La Vega"),
+        City("Punta Cana"),
+        City("Bonao"),
+        City("San Juan de la Maguana")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(

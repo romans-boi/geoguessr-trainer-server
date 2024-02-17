@@ -11,7 +11,17 @@ data class FaroeIslands(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Krone,
     override val domain: Domain = Domain.FaroeIslands,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Klaksvík"),
+        City("Runavík"),
+        City("Fuglafjørður"),
+        City("Tvøroyri"),
+        City("Vágur"),
+        City("Nordragota"),
+        City("Gøta"),
+        City("Vestmanna")
+    )
+    ,
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.FaroeIslands),

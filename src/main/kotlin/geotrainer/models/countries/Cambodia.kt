@@ -10,7 +10,16 @@ data class Cambodia(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Riel,
     override val domain: Domain = Domain.Cambodia,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Krong Siem Reap"),
+        City("Krong Battambang"),
+        City("Krong Poi Pet"),
+        City("Samraong"),
+        City("Preah Sihanouk"),
+        City("Chhlong"),
+        City("Skun"),
+    )
+    ,
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Cambodia),
