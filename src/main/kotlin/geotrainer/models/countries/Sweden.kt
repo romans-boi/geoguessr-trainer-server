@@ -1,11 +1,6 @@
 package geotrainer.models.countries
 
-import geotrainer.models.CameraGeneration
-import geotrainer.models.Currency
-import geotrainer.models.Domain
-import geotrainer.models.DrivingSide
-import geotrainer.models.PhoneDialingCode
-import geotrainer.models.RoadLines
+import geotrainer.models.*
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -16,7 +11,7 @@ data class Sweden(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Krona,
     override val domain: Domain = Domain.Sweden,
-    override val majorCities: List<String> = listOf("TODO"),
+    override val majorCities: List<City> = emptyList(),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Sweden),
