@@ -59,7 +59,8 @@ class CapitalCitiesQuestionFactory(
                 selectedCountry = country,
                 answer = answerSubject.name,
                 selector = { selectorCountry ->
-                    randomHelper.randomOrNull(selectorCountry.capitalCities?.map { city -> city.name })
+                    val city = randomHelper.randomOrNull(selectorCountry.capitalCities)
+                    city?.name
                 }
             )
 
