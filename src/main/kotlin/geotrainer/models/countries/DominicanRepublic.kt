@@ -12,8 +12,6 @@ data class DominicanRepublic(
     override val domain: Domain = Domain.DominicanRepublic,
     override val majorCities: List<City> = listOf(
         City("Santiago de los Caballeros"),
-        City("Santo Domingo Oeste"),
-        City("Santo Domingo Este"),
         City("San Pedro de Macorís"),
         City("La Romana"),
         City("Bella Vista"),

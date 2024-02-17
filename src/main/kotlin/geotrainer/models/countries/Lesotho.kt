@@ -10,7 +10,13 @@ data class Lesotho(
     override val drivingSide: DrivingSide = DrivingSide.Left,
     override val currency: Currency = Currency.Loti,
     override val domain: Domain = Domain.Lesotho,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Quthing"),
+        City("Qacha's Nek"),
+        City("Morija"),
+        City("Thaba-Tseka"),
+        City("Mokhotlong")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Lesotho),

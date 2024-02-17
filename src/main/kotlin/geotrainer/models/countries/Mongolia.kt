@@ -10,7 +10,12 @@ data class Mongolia(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Togrog,
     override val domain: Domain = Domain.Mongolia,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Darkhan"),
+        City("Erdenet"),
+        City("Choibalsan"),
+        City("Mörön")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Mongolia),

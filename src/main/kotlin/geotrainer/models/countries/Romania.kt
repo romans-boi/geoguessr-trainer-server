@@ -11,7 +11,17 @@ data class Romania(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Leu,
     override val domain: Domain = Domain.Romania,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Cluj-Napoca"),
+        City("Timișoara"),
+        City("Iași"),
+        City("Constanța"),
+        City("Craiova"),
+        City("Brașov"),
+        City("Galați"),
+        City("Ploiești"),
+        City("Oradea")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Romania),

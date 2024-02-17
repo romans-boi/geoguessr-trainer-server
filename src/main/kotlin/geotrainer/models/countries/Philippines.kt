@@ -10,7 +10,17 @@ data class Philippines(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.PhilippinePeso,
     override val domain: Domain = Domain.Philippines,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Quezon City"),
+        City("Davao City"),
+        City("Cebu City"),
+        City("Zamboanga City"),
+        City("Taguig City"),
+        City("Antipolo City"),
+        City("Pasig City"),
+        City("Cagayan de Oro"),
+        City("Parañaque City")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Philippines),

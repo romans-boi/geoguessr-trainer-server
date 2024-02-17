@@ -12,7 +12,6 @@ data class India(
     override val domain: Domain = Domain.India,
     override val majorCities: List<City> = listOf(
         City("Mumbai"),
-        City("Delhi"),
         City("Bangalore"),
         City("Hyderabad"),
         City("Chennai"),

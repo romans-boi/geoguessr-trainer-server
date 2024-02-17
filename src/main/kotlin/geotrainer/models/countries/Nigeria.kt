@@ -10,7 +10,17 @@ data class Nigeria(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Naira,
     override val domain: Domain = Domain.Nigeria,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Lagos"),
+        City("Kano"),
+        City("Ibadan"),
+        City("Kaduna"),
+        City("Port Harcourt"),
+        City("Benin City"),
+        City("Maiduguri"),
+        City("Zaria"),
+        City("Aba")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Nigeria),

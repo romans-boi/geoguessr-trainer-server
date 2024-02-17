@@ -16,9 +16,8 @@ data class Eswatini(
         City("Malkerns"),
         City("Nhlangano"),
         City("Siteki"),
-        City("Dvokolwako"),
         City("Hluti"),
-        City("Mhlume"),
+        City("Mhlume")
     ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,

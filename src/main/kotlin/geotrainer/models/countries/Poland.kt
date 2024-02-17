@@ -11,7 +11,17 @@ data class Poland(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Zloty,
     override val domain: Domain = Domain.Poland,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Kraków"),
+        City("Łódź"),
+        City("Wrocław"),
+        City("Poznań"),
+        City("Gdańsk"),
+        City("Szczecin"),
+        City("Bydgoszcz"),
+        City("Lublin"),
+        City("Katowice")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Poland),

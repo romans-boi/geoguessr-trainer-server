@@ -10,7 +10,12 @@ data class Nepal(
     override val drivingSide: DrivingSide = DrivingSide.Left,
     override val currency: Currency = Currency.NepaleseRupee,
     override val domain: Domain = Domain.Nepal,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Pokhara"),
+        City("Lalitpur"),
+        City("Bharatpur"),
+        City("Biratnagar")
+    ),
     override val carPlates: List<String>? = null,
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode>? = null,

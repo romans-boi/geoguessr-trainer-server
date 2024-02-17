@@ -11,7 +11,17 @@ data class Lithuania(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Euro,
     override val domain: Domain = Domain.Lithuania,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Kaunas"),
+        City("Klaipeda"),
+        City("Šiauliai"),
+        City("Panevėžys"),
+        City("Alytus"),
+        City("Marijampolė"),
+        City("Mažeikiai"),
+        City("Jonava"),
+        City("Utena")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Lithuania),

@@ -10,7 +10,17 @@ data class PuertoRico(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Dollar,
     override val domain: Domain = Domain.PuertoRico,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Bayamón"),
+        City("Carolina"),
+        City("Ponce"),
+        City("Caguas"),
+        City("Guaynabo"),
+        City("Mayagüez"),
+        City("Trujillo Alto"),
+        City("Arecibo"),
+        City("Fajardo")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(

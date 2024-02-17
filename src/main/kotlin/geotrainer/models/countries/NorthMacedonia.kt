@@ -11,7 +11,17 @@ data class NorthMacedonia(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Denar,
     override val domain: Domain = Domain.NorthMacedonia,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Bitola"),
+        City("Kumanovo"),
+        City("Prilep"),
+        City("Tetovo"),
+        City("Ohrid"),
+        City("Veles"),
+        City("Štip"),
+        City("Gostivar"),
+        City("Strumica")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.NorthMacedonia),

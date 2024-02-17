@@ -10,7 +10,12 @@ data class Rwanda(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.RwandanFranc,
     override val domain: Domain = Domain.Rwanda,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Butare"),
+        City("Gitarama"),
+        City("Ruhengeri"),
+        City("Gisenyi")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Rwanda),

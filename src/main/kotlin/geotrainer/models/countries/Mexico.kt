@@ -10,7 +10,17 @@ data class Mexico(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Peso,
     override val domain: Domain = Domain.Mexico,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Guadalajara"),
+        City("Monterrey"),
+        City("Puebla"),
+        City("Tijuana"),
+        City("Querétaro"),
+        City("Juárez"),
+        City("León"),
+        City("Zapopan"),
+        City("Monclova")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Mexico),

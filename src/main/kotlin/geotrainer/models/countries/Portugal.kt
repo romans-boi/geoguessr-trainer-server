@@ -11,7 +11,17 @@ data class Portugal(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Euro,
     override val domain: Domain = Domain.Portugal,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Porto"),
+        City("Vila Nova de Gaia"),
+        City("Amadora"),
+        City("Braga"),
+        City("Coimbra"),
+        City("Funchal"),
+        City("Setúbal"),
+        City("Almada"),
+        City("Aveiro")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Portugal),

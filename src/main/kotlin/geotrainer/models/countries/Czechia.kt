@@ -12,7 +12,6 @@ data class Czechia(
     override val currency: Currency = Currency.Koruna,
     override val domain: Domain = Domain.Czechia,
     override val majorCities: List<City> = listOf(
-        City("Prague"),
         City("Brno"),
         City("Ostrava"),
         City("Pilsen"),

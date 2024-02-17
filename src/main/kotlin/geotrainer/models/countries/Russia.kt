@@ -11,7 +11,17 @@ data class Russia(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Ruble,
     override val domain: Domain = Domain.Russia,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Saint Petersburg"),
+        City("Novosibirsk"),
+        City("Yekaterinburg"),
+        City("Nizhny Novgorod"),
+        City("Kazan"),
+        City("Chelyabinsk"),
+        City("Omsk"),
+        City("Samara"),
+        City("Rostov-on-Don")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Russia),

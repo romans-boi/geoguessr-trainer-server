@@ -11,7 +11,6 @@ data class Kyrgyzstan(
     override val currency: Currency = Currency.Som,
     override val domain: Domain = Domain.Kyrgyzstan,
     override val majorCities: List<City> = listOf(
-        City("Bishkek"),
         City("Osh"),
         City("Jalal-Abad"),
         City("Karakol"),

@@ -11,7 +11,17 @@ data class Latvia(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Euro,
     override val domain: Domain = Domain.Latvia,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Daugavpils"),
+        City("Liepāja"),
+        City("Jelgava"),
+        City("Jūrmala"),
+        City("Ventspils"),
+        City("Rēzekne"),
+        City("Valmiera"),
+        City("Ogre"),
+        City("Cesis")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Latvia),

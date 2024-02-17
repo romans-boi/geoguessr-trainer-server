@@ -11,7 +11,6 @@ data class HongKong(
     override val currency: Currency = Currency.HongKongDollar,
     override val domain: Domain = Domain.HongKong,
     override val majorCities: List<City> = listOf(
-        City("Hong Kong"),
         City("Kowloon"),
         City("Tsuen Wan"),
         City("Yuen Long Kau Hui"),

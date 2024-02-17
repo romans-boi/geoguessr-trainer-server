@@ -10,7 +10,17 @@ data class Peru(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Sol,
     override val domain: Domain = Domain.Peru,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Arequipa"),
+        City("Trujillo"),
+        City("Chiclayo"),
+        City("Piura"),
+        City("Iquitos"),
+        City("Cusco"),
+        City("Huancayo"),
+        City("Chimbote"),
+        City("Pucallpa")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Peru),

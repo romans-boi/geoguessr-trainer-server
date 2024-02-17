@@ -11,7 +11,6 @@ data class Japan(
     override val currency: Currency = Currency.Yen,
     override val domain: Domain = Domain.Japan,
     override val majorCities: List<City> = listOf(
-        City("Tokyo"),
         City("Yokohama"),
         City("Osaka"),
         City("Nagoya"),
