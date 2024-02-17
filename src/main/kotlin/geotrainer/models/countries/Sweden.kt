@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Sweden(
     override val name: String = "Sweden",
-    override val capitalCities: List<String> = listOf("Stockholm"),
+    override val capitalCities: List<City> = listOf(City("Stockholm")),
     override val isPartOfEuropeanUnion: Boolean = true,
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Krona,

@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Estonia(
     override val name: String = "Estonia",
-    override val capitalCities: List<String> = listOf("Tallinn"),
+    override val capitalCities: List<City> = listOf(City("Tallinn")),
     override val isPartOfEuropeanUnion: Boolean = true,
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Euro,

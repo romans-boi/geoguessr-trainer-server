@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class NorthMacedonia(
     override val name: String = "North Macedonia",
-    override val capitalCities: List<String> = listOf("Skopje"),
+    override val capitalCities: List<City> = listOf(City("Skopje")),
     override val isPartOfEuropeanUnion: Boolean = false,
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Denar,

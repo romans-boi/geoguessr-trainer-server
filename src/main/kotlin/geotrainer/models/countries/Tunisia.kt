@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Tunisia(
     override val name: String = "Tunisia",
-    override val capitalCities: List<String> = listOf("Tunis"),
+    override val capitalCities: List<City> = listOf(City("Tunis")),
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.TunisianDinar,
     override val domain: Domain = Domain.Tunisia,

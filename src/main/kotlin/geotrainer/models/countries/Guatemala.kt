@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Guatemala(
     override val name: String = "Guatemala",
-    override val capitalCities: List<String> = listOf("Guatemala City"),
+    override val capitalCities: List<City> = listOf(City("Guatemala City")),
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Quetzal,
     override val domain: Domain = Domain.Guatemala,

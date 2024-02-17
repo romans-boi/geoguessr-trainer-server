@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class UnitedStates(
     override val name: String = "United States",
-    override val capitalCities: List<String> = listOf("Washington D.C."),
+    override val capitalCities: List<City> = listOf(City("Washington D.C.")),
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Dollar,
     override val domain: Domain = Domain.UnitedStates,

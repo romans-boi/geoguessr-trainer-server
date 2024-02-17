@@ -6,11 +6,11 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class SouthAfrica(
     override val name: String = "South Africa",
-    override val capitalCities: List<String> = listOf(
+    override val capitalCities: List<City> = listOf(City(
         "Pretoria (administrative)",
         "Cape Town (legislative)",
         "Bloemfontein (judiciary)"
-    ),
+    )),
     override val drivingSide: DrivingSide = DrivingSide.Left,
     override val currency: Currency = Currency.Rand,
     override val domain: Domain = Domain.SouthAfrica,
