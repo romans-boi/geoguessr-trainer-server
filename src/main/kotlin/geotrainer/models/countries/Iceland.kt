@@ -11,7 +11,17 @@ data class Iceland(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Krona,
     override val domain: Domain = Domain.Iceland,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Kopavogur"),
+        City("Hafnarfjordur"),
+        City("Akureyri"),
+        City("Reykjanesbaer"),
+        City("Seltjarnarnes"),
+        City("Garðabær"),
+        City("Mosfellsbaer"),
+        City("Akranes"),
+        City("Selfoss")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String> = listOf("TODO"),
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Iceland),

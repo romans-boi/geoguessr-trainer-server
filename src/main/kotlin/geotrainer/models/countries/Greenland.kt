@@ -10,7 +10,12 @@ data class Greenland(
     override val drivingSide: DrivingSide = DrivingSide.Right,
     override val currency: Currency = Currency.Krone,
     override val domain: Domain = Domain.Greenland,
-    override val majorCities: List<City> = emptyList(),
+    override val majorCities: List<City> = listOf(
+        City("Sisimiut"),
+        City("Ilulissat"),
+        City("Qaqortoq"),
+        City("Aasiaat")
+    ),
     override val carPlates: List<String> = listOf("TODO"),
     override val bollards: List<String>? = null,
     override val phoneDialingCodes: List<PhoneDialingCode> = listOf(PhoneDialingCode.Greenland),
