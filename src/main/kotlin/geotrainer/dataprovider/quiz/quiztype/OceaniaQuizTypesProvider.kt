@@ -1,10 +1,10 @@
-package geotrainer.dataprovider.quiz.quizType
+package geotrainer.dataprovider.quiz.quiztype
 
 import geotrainer.models.Continent
 import geotrainer.models.quiz.QuizType
 
-class SouthAmericaQuizTypesProvider : ContinentQuizTypesProvider {
-    override val continent: Continent = Continent.SouthAmerica
+class OceaniaQuizTypesProvider : ContinentQuizTypesProvider {
+    override val continent: Continent = Continent.Oceania
 
     override fun getAllQuizTypes() = setOf(
         QuizType.CapitalCities,

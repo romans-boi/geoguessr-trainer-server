@@ -1,8 +1,8 @@
 package geotrainer.feature.quiz.domain
 
 import geotrainer.models.Continent
-import geotrainer.models.quiz.QuizType
 import geotrainer.models.quiz.QuizQuestion
+import geotrainer.models.quiz.QuizType
 
 interface QuizRepository {
     fun generateQuiz(

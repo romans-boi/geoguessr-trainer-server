@@ -1,4 +1,4 @@
-package geotrainer.dataprovider.quiz.quizType
+package geotrainer.dataprovider.quiz.quiztype
 
 import geotrainer.models.Continent
 import geotrainer.models.quiz.QuizType
