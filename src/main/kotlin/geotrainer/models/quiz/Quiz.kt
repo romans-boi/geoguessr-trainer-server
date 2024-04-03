@@ -4,7 +4,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Quiz(
-    val quizId: QuizId,
+    val quizType: QuizType,
     val title: String,
     val description: String
 )

@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class QuizWithContinent(
-    val quizId: QuizId,
+    val quizType: QuizType,
     val title: String,
     val description: String,
     val continent: Continent?

@@ -1,6 +1,6 @@
 package geotrainer.models.quiz
 
-enum class QuizId {
+enum class QuizType {
     Everything,
 
     CapitalCities,

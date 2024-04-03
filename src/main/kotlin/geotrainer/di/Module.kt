@@ -5,14 +5,14 @@ import geotrainer.dataprovider.CountriesWithNoCoverageProviderImpl
 import geotrainer.dataprovider.CountryProvider
 import geotrainer.dataprovider.quiz.AllQuizzesProvider
 import geotrainer.dataprovider.quiz.AllQuizzesProviderImpl
-import geotrainer.dataprovider.quiz.quizid.AfricaQuizIdsProvider
-import geotrainer.dataprovider.quiz.quizid.AsiaQuizIdsProvider
-import geotrainer.dataprovider.quiz.quizid.ContinentQuizIdsProvider
-import geotrainer.dataprovider.quiz.quizid.EuropeQuizIdsProvider
-import geotrainer.dataprovider.quiz.quizid.GenericQuizIdsProviderImpl
-import geotrainer.dataprovider.quiz.quizid.NorthAmericaQuizIdsProvider
-import geotrainer.dataprovider.quiz.quizid.OceaniaQuizIdsProvider
-import geotrainer.dataprovider.quiz.quizid.SouthAmericaQuizIdsProvider
+import geotrainer.dataprovider.quiz.quizType.AfricaQuizTypesProvider
+import geotrainer.dataprovider.quiz.quizType.AsiaQuizTypesProvider
+import geotrainer.dataprovider.quiz.quizType.ContinentQuizTypesProvider
+import geotrainer.dataprovider.quiz.quizType.EuropeQuizTypesProvider
+import geotrainer.dataprovider.quiz.quizType.GenericQuizTypesProviderImpl
+import geotrainer.dataprovider.quiz.quizType.NorthAmericaQuizTypesProvider
+import geotrainer.dataprovider.quiz.quizType.OceaniaQuizTypesProvider
+import geotrainer.dataprovider.quiz.quizType.SouthAmericaQuizTypesProvider
 import geotrainer.feature.allquizzes.domain.AllQuizzesRepository
 import geotrainer.feature.allquizzes.domain.AllQuizzesRepositoryImpl
 import geotrainer.feature.quiz.domain.QuizGenerator
@@ -33,16 +33,16 @@ val appModule = module {
     single<CountriesWithNoCoverageProvider> { CountriesWithNoCoverageProviderImpl() }
     single<AllQuizzesProvider> { AllQuizzesProviderImpl() }
 
-    single<Set<ContinentQuizIdsProvider>> {
+    single<Set<ContinentQuizTypesProvider>> {
         setOf(
-            AfricaQuizIdsProvider(),
-            AsiaQuizIdsProvider(),
-            EuropeQuizIdsProvider(),
-            NorthAmericaQuizIdsProvider(),
-            SouthAmericaQuizIdsProvider(),
-            OceaniaQuizIdsProvider(),
+            AfricaQuizTypesProvider(),
+            AsiaQuizTypesProvider(),
+            EuropeQuizTypesProvider(),
+            NorthAmericaQuizTypesProvider(),
+            SouthAmericaQuizTypesProvider(),
+            OceaniaQuizTypesProvider(),
 
-            GenericQuizIdsProviderImpl()
+            GenericQuizTypesProviderImpl()
         )
     }
 

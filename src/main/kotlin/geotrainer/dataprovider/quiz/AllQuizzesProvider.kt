@@ -1,7 +1,7 @@
 package geotrainer.dataprovider.quiz
 
 import geotrainer.models.quiz.Quiz
-import geotrainer.models.quiz.QuizId
+import geotrainer.models.quiz.QuizType
 
 interface AllQuizzesProvider {
     fun getAllQuizzes(): List<Quiz>
@@ -10,43 +10,43 @@ interface AllQuizzesProvider {
 class AllQuizzesProviderImpl : AllQuizzesProvider {
     override fun getAllQuizzes() = listOf(
         Quiz(
-            quizId = QuizId.Everything,
+            quizType = QuizType.Everything,
             title = "Everything combined",
             description = "TODO"
         ),
 
         Quiz(
-            quizId = QuizId.CapitalCities,
+            quizType = QuizType.CapitalCities,
             title = "Capital Cities",
             description = "TODO"
         ),
 
         Quiz(
-            quizId = QuizId.DomainNames,
+            quizType = QuizType.DomainNames,
             title = "Domain Names",
             description = "TODO"
         ),
 
         Quiz(
-            quizId = QuizId.DrivingSide,
+            quizType = QuizType.DrivingSide,
             title = "Driving Side of the Road",
             description = "TODO"
         ),
 
         Quiz(
-            quizId = QuizId.CountryInContinent,
+            quizType = QuizType.CountryInContinent,
             title = "What Continent is This Country In?",
             description = "TODO"
         ),
 
         Quiz(
-            quizId = QuizId.JapanesePrefecturesKanji,
+            quizType = QuizType.JapanesePrefecturesKanji,
             title = "Prefectures in Kanji",
             description = "TODO"
         ),
 
         Quiz(
-            quizId = QuizId.EuropeanUnionCountries,
+            quizType = QuizType.EuropeanUnionCountries,
             title = "Countries in the European Union",
             description = "TODO"
         ),

@@ -2,20 +2,16 @@ package geotrainer.feature.quiz.presentation
 
 import geotrainer.feature.quiz.domain.QuizRepository
 import geotrainer.models.Continent
-import geotrainer.models.quiz.QuizId
-import io.ktor.http.HttpStatusCode
-import io.ktor.server.application.ApplicationCall
-import io.ktor.server.application.call
-import io.ktor.server.response.respond
-import io.ktor.server.response.respondText
-import io.ktor.server.routing.Route
-import io.ktor.server.routing.get
-import io.ktor.server.routing.route
-import io.ktor.util.pipeline.PipelineContext
+import geotrainer.models.quiz.QuizType
+import io.ktor.http.*
+import io.ktor.server.application.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
+import io.ktor.util.pipeline.*
 import org.koin.ktor.ext.inject
 
 fun Route.quizRouting() {
-    val quizIdParam = "quizId"
+    val quizTypeParam = "quizType"
     val continentParam = "continent"
     val numOfQuestionsParam = "numOfQuestions"
     val numOfOptionsParam = "numOfOptions"
@@ -24,8 +20,8 @@ fun Route.quizRouting() {
         val quizRepository by inject<QuizRepository>()
 
         get {
-            val quizId = call.request.queryParameters[quizIdParam]
-                ?: return@get getMissingError(quizIdParam)
+            val quizType = call.request.queryParameters[quizTypeParam]
+                ?: return@get getMissingError(quizTypeParam)
 
             val continent = call.request.queryParameters[continentParam]
 
@@ -36,7 +32,7 @@ fun Route.quizRouting() {
                 ?: return@get getMissingError(numOfOptionsParam)
 
             val quizQuestions = quizRepository.generateQuiz(
-                quizId = QuizId.valueOfOrNull(quizId) ?: return@get getInvalidError(quizId),
+                quizType = QuizType.valueOfOrNull(quizType) ?: return@get getInvalidError(quizType),
                 continent = Continent.valueOfOrNull(continent),
 
                 numOfQuestions = numOfQuestions.toIntOrNull().let { num ->
