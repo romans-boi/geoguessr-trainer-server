@@ -2,11 +2,10 @@ package geotrainer.feature.allquizzes.domain
 
 import geotrainer.dataprovider.quiz.AllQuizzesProvider
 import geotrainer.dataprovider.quiz.quiztype.ContinentQuizTypesProvider
-import geotrainer.models.quiz.QuizWithContinent
-import java.util.UUID
+import geotrainer.models.quiz.Quiz
 
 interface AllQuizzesRepository {
-    fun getAllQuizSections(): List<QuizWithContinent>
+    fun getAllQuizSections(): List<Quiz>
 }
 
 class AllQuizzesRepositoryImpl(
@@ -15,13 +14,12 @@ class AllQuizzesRepositoryImpl(
 ) : AllQuizzesRepository {
     private val allQuizzes = allQuizzesProvider.getAllQuizzes()
 
-    override fun getAllQuizSections(): List<QuizWithContinent> = quizTypesProviders.flatMap { provider ->
+    override fun getAllQuizSections(): List<Quiz> = quizTypesProviders.flatMap { provider ->
         val quizTypes = provider.getAllQuizTypes()
 
         val quizzes = allQuizzes.filter { quiz -> quiz.quizType in quizTypes }
         quizzes.map { quiz ->
-            QuizWithContinent(
-                id = UUID.randomUUID().toString(),
+            Quiz(
                 quizType = quiz.quizType,
                 title = quiz.title,
                 description = quiz.description,

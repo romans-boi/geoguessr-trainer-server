@@ -2,7 +2,6 @@ package geotrainer.dataprovider.quiz
 
 import geotrainer.models.quiz.Quiz
 import geotrainer.models.quiz.QuizType
-import java.util.UUID
 
 interface AllQuizzesProvider {
     fun getAllQuizzes(): List<Quiz>
@@ -11,52 +10,52 @@ interface AllQuizzesProvider {
 class AllQuizzesProviderImpl : AllQuizzesProvider {
     override fun getAllQuizzes() = listOf(
         Quiz(
-            id = UUID.randomUUID().toString(),
             quizType = QuizType.Everything,
             title = "Everything combined",
-            description = "TODO"
+            description = "TODO",
+            continent = null
         ),
 
         Quiz(
-            id = UUID.randomUUID().toString(),
             quizType = QuizType.CapitalCities,
             title = "Capital Cities",
-            description = "TODO"
+            description = "TODO",
+            continent = null
         ),
 
         Quiz(
-            id = UUID.randomUUID().toString(),
             quizType = QuizType.DomainNames,
             title = "Domain Names",
-            description = "TODO"
+            description = "TODO",
+            continent = null
         ),
 
         Quiz(
-            id = UUID.randomUUID().toString(),
             quizType = QuizType.DrivingSide,
             title = "Driving Side of the Road",
-            description = "TODO"
+            description = "TODO",
+            continent = null
         ),
 
         Quiz(
-            id = UUID.randomUUID().toString(),
             quizType = QuizType.CountryInContinent,
             title = "What Continent is This Country In?",
-            description = "TODO"
+            description = "TODO",
+            continent = null
         ),
 
         Quiz(
-            id = UUID.randomUUID().toString(),
             quizType = QuizType.JapanesePrefecturesKanji,
             title = "Prefectures in Kanji",
-            description = "TODO"
+            description = "TODO",
+            continent = null
         ),
 
         Quiz(
-            id = UUID.randomUUID().toString(),
             quizType = QuizType.EuropeanUnionCountries,
             title = "Countries in the European Union",
-            description = "TODO"
+            description = "TODO",
+            continent = null
         ),
     )
 }
